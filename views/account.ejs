@@ -1,0 +1,48 @@
+<% include partials/header%>
+<head>
+     <link rel="stylesheet" href="./stylesheet/sign.css">
+    <link rel="stylesheet" href="./stylesheet/bootstrap.min.css">
+    <script src="./scripts/signin.js"></script>
+     <!-- <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>   -->
+</head>
+
+    <title> <%= title %> </title>
+
+
+
+    <div class="container-fluid">
+    <div class="main">
+      <ul class="tab-group">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="/login">Log In</a></li>
+      </ul>
+      <img src="./images/avatar.png" alt="Avatar" class="avatar">
+
+
+        <form class="signUp" action="account" method="POST">
+        
+        <h3>Create Your Account</h3>
+        <p>Enter your email address</br>and your password for join.
+        </p>
+        <p><input type="text" name="user_id" placeholder="Insert ID" required></p>
+        <p><input class="emailbox1" type="email" name="email" placeholder="Insert e-mail" required autocomplete='off' /></p>
+        <p><input type="password" name="password"  placeholder="Insert Password" required /></p>
+        <p><input type="password" name="confirm_password" placeholder="Verify Password" required /></p>
+        <button class="btn btn-outline-success " type="reset">Reset</button>
+        <button class="btn btn-outline-success " type="submit">Sign Up</button>
+    </form>           
+
+<!-- login form -->
+
+    <!-- <form class="login" action="" method="POST">
+        <h3>Welcome</br>Back !</h3>
+        
+        <input type="email" class="emailbox2" placeholder="Insert eMail" autocomplete='off' required />
+        <input type="password" placeholder="Insert Password" required />
+    
+        <button class="btn btn-outline-success" type="button">Back</button>
+        <button class=" btn btn-outline-success" type="submit">Log In</button>
+    </form> -->
+<!-- </div>
+  
+</div>
