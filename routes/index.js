@@ -131,11 +131,11 @@ router.post ('/lecturer/class', function (req, res) {
             fstudent: req.body.student,
             startTime: req.body.time
         };
-        models.Session.create(newClass, function (err, unit) {
+        models.Session.create(newClass, function (err, lecture) {
             if (err) {
                 console.log(err);                
             }
-            unit.save((err) => {
+            lecture.save((err) => {
                  return res.redirect('/lecturer/class');
             });
         })
@@ -145,7 +145,7 @@ router.post ('/lecturer/class', function (req, res) {
 
 // how should i structure the new table for students joining a class?
 router.post('/student/class', function (req, res) {
-    const errors = validationResult(req);
+    const errors = validationResult(req);   
     if (!errors.isEmpty()) {
         return res.status(422).json({
             errors: errors.array()
@@ -154,13 +154,15 @@ router.post('/student/class', function (req, res) {
         let newStudent = {
             student: req.body.student
         };
-        models.Session.push(newStudent, function (req, res) {
+        models.Session.push(newStudent, function (err, student) {
                 if (err) {
                     console.log(err);                
                 }
-                unit.save((err) => {
+                lecture.save((err) => {
                      return res.redirect('/student/class');
                 });
+                console.log(student);
+                
         })
     }
 })

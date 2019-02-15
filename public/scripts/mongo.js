@@ -23,9 +23,7 @@ let Units =  mongoose.model('Units', unitsSchema);
 const classSchema = new Schema({
   unit: String,
   lecturer: String,
-  student: [{
-    type: Array
-  }],
+  student: [],
   time: String
 });
 
