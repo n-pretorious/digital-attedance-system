@@ -1,18 +1,40 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
+// schema to register new user
 const usersSchema = new Schema({
-    user_id: String, 
-    email: String, 
-    password: String, 
-    confirm_password: String
-  });
+  user_id: String, 
+  email: String, 
+  password: String, 
+  confirm_password: String
+});
 
-const unitssSchema = new Schema({
+let Users =  mongoose.model('Users', usersSchema);
+
+// schema to register new unit
+const unitsSchema = new Schema({
   code : String, 
   name: String, 
 });
 
-module.exports =  mongoose.model('User', usersSchema);
+let Units =  mongoose.model('Units', unitsSchema);
+
+// schema of a new class
+const classSchema = new Schema({
+  unit: String,
+  lecturer: String,
+  student: [{
+    type: Array
+  }],
+  time: String
+});
+
+let Session = mongoose.model('Session', classSchema)
+
+module.exports = {
+  Users: Users,
+  Units: Units,
+  Session: Session
+};
 
   

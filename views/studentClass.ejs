@@ -1,0 +1,43 @@
+<% include partials/header %>
+<% include partials/navigation %>
+
+    <div class="col-md-12">
+        <h1><%= title %></h1><br>
+
+        <!-- <div>
+            <select id="viewStudentunit" name="viewStudentunit" onchange="handlers.studentJoinClass()">
+                <option value="null">--select unit--</option>
+                <% data.forEach(function(unit){ %>
+                    <option value = <%= unit.code %>> <%= unit.code %> </option>
+                <% }) %>    
+            </select>
+        </div> -->
+    <form action="/student/class" method="POST">
+        <table id="classesInSession" class="table" onclick="handlers.studentJoinClass()">
+            <thead>
+                <tr>
+                    <th>
+                        classes in session
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(unit){ %>
+                    <tr class="table-active">
+                        <td>
+                            <%= unit.unit%> - 
+                            <input type="text" name="student" placeholder="student name">
+                            <button onclick="handlers.studentJoinClass()" type="submit" class="btn btn-sm btn-success">
+                                Join-Class
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %> 
+            </tbody>
+        </table>
+        
+    </form>
+        
+    </div>
+    
+<% include partials/footer %>
