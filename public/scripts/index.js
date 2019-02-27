@@ -50,5 +50,11 @@ let handlers = {
     },
     studentJoinClass: function () {
 // get element from table row and submit
+        let activeStudent = document.getElementById('student').value
+        let id = document.getElementById('id').value
+        console.log(activeStudent);
+        console.log(id);
+        
+        studentList.addStudent(activeStudent)
     }
 }

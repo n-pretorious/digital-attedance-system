@@ -21,9 +21,12 @@ let Units =  mongoose.model('Units', unitsSchema);
 
 // schema of a new class
 const classSchema = new Schema({
+  // _id: { type: String },
   unit: String,
   lecturer: String,
-  student: [],
+  student: [{
+    type: String
+  }],
   time: String
 });
 

@@ -4,11 +4,6 @@ const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const models = require('../public/scripts/mongo.js');
 
-
-
-
-
-
 // pages routes
 router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
@@ -88,7 +83,6 @@ router.post ('/account',[
                 return res.redirect('/account');
              });
         })
-
         console.log(newUser);  
     }
 })
@@ -128,9 +122,10 @@ router.post ('/lecturer/class', function (req, res) {
         let newClass = {
             unit: req.body.viewUnits,
             lecturer: req.body.lecturer,
-            fstudent: req.body.student,
+            student: req.body.student,
             startTime: req.body.time
         };
+
         models.Session.create(newClass, function (err, lecture) {
             if (err) {
                 console.log(err);                
@@ -143,29 +138,21 @@ router.post ('/lecturer/class', function (req, res) {
     }
 })
 
-// how should i structure the new table for students joining a class?
-router.post('/student/class', function (req, res) {
-    const errors = validationResult(req);   
+router.post ('/student/class', function (req, res) {
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
             errors: errors.array()
         });
     } else {
-        let newStudent = {
-            student: req.body.student
-        };
-        models.Session.push(newStudent, function (err, student) {
-                if (err) {
-                    console.log(err);                
-                }
-                lecture.save((err) => {
-                     return res.redirect('/student/class');
-                });
-                console.log(student);
-                
+        models.Session.findById( req.body._id, function (err, session) {
+
+            // adds a student to an ongoing lecture session
+            session.student.push(req.body.student)
+            session.save();
+            console.log(session);
         })
     }
 })
-
 
 module.exports = router
