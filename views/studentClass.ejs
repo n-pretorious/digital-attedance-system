@@ -1,0 +1,38 @@
+<% include partials/header %>
+<% include partials/navigation %>
+
+    <div class="col-md-12">
+        <h1><%= title %></h1><br>
+
+        <div>            
+            <table id="classesInSession" class="table">
+                <thead>
+                    <tr>
+                        <th>
+                                classes in session
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% data.forEach(function(unit){ %>
+                    <tr>
+                        <td>
+                            <%= unit.unit%> -
+                            <form action="/student/class" method="POST">
+                            <input type="hidden" name="_id" value= <%= unit._id %>>
+                            <input type="text" name="student" placeholder="student">
+            
+                            <button type="submit" class="btn btn-lg btn-outline-secondary">
+                                Join-Class
+                            </button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>    
+        </div>
+        
+    </div>
+    
+<% include partials/footer %>

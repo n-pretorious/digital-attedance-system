@@ -1,0 +1,21 @@
+div.dashboard{
+    width: 700px;
+    height:600px; 
+    background: rgba(121, 202, 121, 0.5);
+	top: 105%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	padding: 30px 30px ;
+}
+h1{
+    text-align: center;
+    color: #27a465;
+    padding-top:30%;
+    padding-left:70%;
+    position: inherit;
+}
+p{
+    padding: 10%;
+}

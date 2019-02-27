@@ -1,0 +1,17 @@
+<% include partials/header %>
+<% include partials/navigation %>
+
+<div class="col-md-12">    
+        <form action="/register-units" method="POST">
+            
+            <h3>Register Units</h3>
+
+            <p><input type="text" name="code" placeholder="Enter Unit Code" required></p>
+            <p><input type="text" name="name" placeholder="Enter Unit Name" required autocomplete='off' /></p>
+
+            <button class="btn btn-outline-success " type="reset">Reset</button>
+            <button class="btn btn-outline-success " type="submit">Submit</button>
+        </form>
+    </div>
+
+<% include partials/footer %>
