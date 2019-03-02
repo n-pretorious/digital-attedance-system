@@ -1,5 +1,6 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 // schema to register new user
 const usersSchema = new Schema({
@@ -8,6 +9,18 @@ const usersSchema = new Schema({
   password: String, 
   confirm_password: String
 });
+
+usersSchema.pre('save', function (next) {
+  const user = this
+  bcrypt.hash(user.password, 10, function (err, hash) {
+    if (err) {
+      console.log(err);
+    }
+    user.password = hash
+    // user.confirm_password = hash
+    next()
+  })
+})
 
 let Users =  mongoose.model('Users', usersSchema);
 

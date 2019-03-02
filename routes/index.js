@@ -4,6 +4,7 @@ const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const models = require('../public/scripts/mongo.js');
 
+
 // pages routes
 router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
@@ -131,7 +132,7 @@ router.post ('/lecturer/class', function (req, res) {
                 console.log(err);                
             }
             lecture.save((err) => {
-                 return res.redirect('/lecturer/class');
+                //  return res.redirect('/lecturer/class');
             });
         })
         console.log(newClass);
