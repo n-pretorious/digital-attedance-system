@@ -24,10 +24,11 @@ const classSchema = new Schema({
   // _id: { type: String },
   unit: String,
   lecturer: String,
-  student: [{
-    type: String
-  }],
-  time: String
+  student: [{type: String}],
+  time: String,
+  latitude: String,
+  longitude: String,
+  radius: String
 });
 
 let Session = mongoose.model('Session', classSchema)

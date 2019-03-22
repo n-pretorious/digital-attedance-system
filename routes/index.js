@@ -3,6 +3,7 @@ const router = express.Router()
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const models = require('../public/scripts/mongo.js');
+const { toLatLon, toLatitudeLongitude, headingDistanceTo, moveTo, insidePolygon } = require('geolocation-utils')
 
 // pages routes
 router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
@@ -123,7 +124,10 @@ router.post ('/lecturer/class', function (req, res) {
             unit: req.body.viewUnits,
             lecturer: req.body.lecturer,
             student: req.body.student,
-            startTime: req.body.time
+            startTime: req.body.time,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+            radius: req.body.radius
         };
 
         models.Session.create(newClass, function (err, lecture) {
