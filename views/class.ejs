@@ -5,8 +5,8 @@
         <h1><%= title %></h1><br>
        
         <div>
-            <form action="" method="POST">
-                <select id="viewUnits" name="viewUnits" >
+            <form action="" method="POST" >
+                <select id="viewUnits" name="viewUnits" onchange="handlers.assingUnitToClass()">
                     <option value="null">select unit to proceed</option>
                     <% data.forEach(function(unit){ %>
                         <option value = <%= unit.code %>> <%= unit.code %> </option>
@@ -14,13 +14,15 @@
                 </select>
                 <p></p>
                 <p><input type="text" name="lecturer" placeholder="lecturer's name"></p>
-                <p><input type="hidden" name="student" placeholder="student"></p>
-                <p><input type="hidden" name="time" value =  <%= new Date()%>></p>
+                <p><input type="text" name="student" placeholder="student"></p>
+                <p><input type="text" name="time"></p>
+                <p><input type="text" id="lat" name="latitude" ><input type="text" id="long" name="longitude"></p>
+                <p><input type="number" name="radius" placeholder="enter class radius"></p>
 
-                <button type="submit" class="btn btn-lg btn-outline-secondary">
+                <button onclick="handlers.startTime()" type="submit" class="btn btn-lg btn-outline-secondary">
                     Start-Class
                 </button>
-                <button  type="button" class="btn btn-lg btn-outline-secondary">
+                <button onclick="handlers.stopTime()" type="button" class="btn btn-lg btn-outline-secondary">
                     End-Class
                 </button>
             </form>
@@ -35,6 +37,9 @@
                 <input type="text" class="form-control" id="exampleInputPassword1" />
             </div>
         </form>
+
+        <p id = "status"></p>
+        <a id = "map-link" target="_blank"></a>
     
     </div>
     
