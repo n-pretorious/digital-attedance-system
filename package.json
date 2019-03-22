@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rerimoi/DAS.git"
+    "url": "git+https://github.com/n-pretorious/digital-attedance-system.git"
   },
   "author": "pretorious",
   "license": "ISC",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rerimoi/DAS#readme",
   "dependencies": {
+    "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",

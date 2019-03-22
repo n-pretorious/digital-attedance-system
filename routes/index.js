@@ -1,12 +1,14 @@
 const express = require('express')
-const router = express.Router()  
+const router = express.Router()
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const models = require('../public/scripts/mongo.js');
 const { toLatLon, toLatitudeLongitude, headingDistanceTo, moveTo, insidePolygon } = require('geolocation-utils')
-
 // pages routes
-router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
+router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})}, geolocation.getCurrentPosition(function (err, position) {
+    if (err) throw err
+    console.log(position)
+  }))
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
 router.get('/account', function(req,res) {res.render('account', {title: 'Login page'})})
 
@@ -135,7 +137,7 @@ router.post ('/lecturer/class', function (req, res) {
                 console.log(err);                
             }
             lecture.save((err) => {
-                 return res.redirect('/lecturer/class');
+                //  return res.redirect('/lecturer/class');
             });
         })
         console.log(newClass);
@@ -159,4 +161,4 @@ router.post ('/student/class', function (req, res) {
     }
 })
 
-module.exports = router
+    module.exports = router
