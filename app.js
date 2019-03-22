@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const mongoose =require('mongoose')
+const mongoose = require('mongoose')
 
 //connecting to database
 mongoose.connect('mongodb+srv://Paula:rerimoi@das-ahzne.gcp.mongodb.net/DAS').DAS;

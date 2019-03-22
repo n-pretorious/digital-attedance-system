@@ -1,12 +1,16 @@
 const express = require('express')
 const router = express.Router()  
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
-const models = require('../public/scripts/mongo.js');
+const { body, validationResult } = require('express-validator/check')
+const { sanitizeBody } = require('express-validator/filter')
+const models = require('../db/mongo')
+const geolocation = require('geolocation')
 
 
 // pages routes
-router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
+router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})}, geolocation.getCurrentPosition(function (err, position) {
+    if (err) throw err
+    console.log(position)
+  }))
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
 router.get('/account', function(req,res) {res.render('account', {title: 'Login page'})})
 
@@ -124,7 +128,7 @@ router.post ('/lecturer/class', function (req, res) {
             unit: req.body.viewUnits,
             lecturer: req.body.lecturer,
             student: req.body.student,
-            startTime: req.body.time
+            startTime: new Date()
         };
 
         models.Session.create(newClass, function (err, lecture) {
@@ -156,4 +160,4 @@ router.post ('/student/class', function (req, res) {
     }
 })
 
-module.exports = router
+    module.exports = router
