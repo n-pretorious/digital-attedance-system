@@ -4,6 +4,8 @@ const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const models = require('../public/scripts/mongo.js');
 const { toLatLon, toLatitudeLongitude, headingDistanceTo, moveTo, insidePolygon } = require('geolocation-utils')
+
+
 // pages routes
 router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})}, geolocation.getCurrentPosition(function (err, position) {
     if (err) throw err
@@ -136,6 +138,7 @@ router.post ('/lecturer/class', function (req, res) {
             if (err) {
                 console.log(err);                
             }
+
             lecture.save((err) => {
                 //  return res.redirect('/lecturer/class');
             });
@@ -154,6 +157,13 @@ router.post ('/student/class', function (req, res) {
         models.Session.findById( req.body._id, function (err, session) {
 
             // adds a student to an ongoing lecture session
+            const center = {
+                lat: lecture.latitude, 
+                lon: lecture.longitude
+            }
+            const radius = lecture.radius // meters
+            insideCircle({lat: req.body.latitude, lon: req.body.longitude}, center, radius) // true
+
             session.student.push(req.body.student)
             session.save();
             console.log(session);
