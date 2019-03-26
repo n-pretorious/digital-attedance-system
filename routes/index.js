@@ -3,14 +3,11 @@ const router = express.Router()
 const { body, validationResult } = require('express-validator/check')
 const { sanitizeBody } = require('express-validator/filter')
 const models = require('../db/mongo')
-const geolocation = require('geolocation')
+
 
 
 // pages routes
-router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})}, geolocation.getCurrentPosition(function (err, position) {
-    if (err) throw err
-    console.log(position)
-  }))
+router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
 router.get('/account', function(req,res) {res.render('account', {title: 'Login page'})})
 
