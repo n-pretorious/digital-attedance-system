@@ -2,15 +2,12 @@ const express = require('express')
 const router = express.Router()
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
-const models = require('../public/scripts/mongo.js');
-const { toLatLon, toLatitudeLongitude, headingDistanceTo, moveTo, insidePolygon } = require('geolocation-utils')
+const models = require('../db/mongo');
+const geolocationUtils = require('geolocation-utils')
 
 
 // pages routes
-router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})}, geolocation.getCurrentPosition(function (err, position) {
-    if (err) throw err
-    console.log(position)
-  }))
+router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
 router.get('/account', function(req,res) {res.render('account', {title: 'Login page'})})
 
@@ -156,17 +153,20 @@ router.post ('/student/class', function (req, res) {
     } else {
         models.Session.findById( req.body._id, function (err, session) {
 
-            // adds a student to an ongoing lecture session
+              // adds a student to an ongoing lecture session
             const center = {
-                lat: lecture.latitude, 
-                lon: lecture.longitude
+                lat: parseFloat(session.latitude), 
+                lon: parseFloat(session.longitude)
             }
-            const radius = lecture.radius // meters
-            insideCircle({lat: req.body.latitude, lon: req.body.longitude}, center, radius) // true
+            console.log(center)
+            const radius = session.radius // meters
+
+            geolocationUtils.insideCircle({lat: parseFloat(req.body.latitude), lon: parseFloat(req.body.longitude)}, center, radius)
 
             session.student.push(req.body.student)
             session.save();
             console.log(session);
+            console.log(req.body)
         })
     }
 })
