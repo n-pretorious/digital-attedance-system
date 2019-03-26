@@ -151,22 +151,28 @@ router.post ('/student/class', function (req, res) {
             errors: errors.array()
         });
     } else {
-        models.Session.findById( req.body._id, function (err, session) {
+        models.Session.findById( req.body._id, function (err, session, next) {
 
-              // adds a student to an ongoing lecture session
+              //test whether a student is within class dimention
             const center = {
                 lat: parseFloat(session.latitude), 
                 lon: parseFloat(session.longitude)
             }
-            console.log(center)
-            const radius = session.radius // meters
+            const radius = parseInt(session.radius) // meters
 
-            geolocationUtils.insideCircle({lat: parseFloat(req.body.latitude), lon: parseFloat(req.body.longitude)}, center, radius)
+            if (geolocationUtils.insideCircle({lat: parseFloat(req.body.latitude), lon: parseFloat(req.body.longitude)}, center, radius) === true) {
+                console.log('within radius')
+                session.student.push(req.body.student)
+                session.save();
+                // console.log(session);
+                // console.log(req.body)
 
-            session.student.push(req.body.student)
-            session.save();
-            console.log(session);
-            console.log(req.body)
+            }else{
+                console.log('outside radius');
+                return res.status(500).json({
+                    message: 'failed to join because you are outside the reach of your class'
+                })
+            }
         })
     }
 })
