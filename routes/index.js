@@ -6,6 +6,7 @@ const models = require('../db/mongo');
 const geolocationUtils = require('geolocation-utils')
 
 
+
 // pages routes
 router.get('/', function(req,res) {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/login', function(req,res) {res.render('login',{title: 'Login page'})})
