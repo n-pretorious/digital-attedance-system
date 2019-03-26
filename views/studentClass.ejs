@@ -14,21 +14,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% data.forEach(function(unit){ %>
+                   
                     <tr>
                         <td>
-                            <%= unit.unit%> -
                             <form action="/student/class" method="POST">
-                            <input type="hidden" name="_id" value= <%= unit._id %>>
-                            <input type="text" name="student" placeholder="enter your adm number">
-            
-                            <button type="submit" class="btn btn-lg btn-outline-secondary">
-                                Join-Class
-                            </button>
+                                <select name="_id" >
+                                    <option value="null">select unit to proceed</option>
+                                    <% data.forEach(function(unit){ %>
+                                        <option value=<%= unit._id  %> > <%= unit.unit %> </option>
+                                    <% }) %>
+                                </select>
+                                <input type="text" name="student" placeholder="enter your adm number">
+                                <input type="text" id="lat" name="latitude" ><input type="text" id="long" name="longitude">
+                
+                                <button type="submit" class="btn btn-lg btn-outline-secondary">Join-Class</button>
                             </form>
                         </td>
                     </tr>
-                    <% }) %>
+                    
                 </tbody>
             </table>    
         </div>
