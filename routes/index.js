@@ -1,8 +1,9 @@
 const express = require('express')
-const router = express.Router()  
-const { body, validationResult } = require('express-validator/check')
-const { sanitizeBody } = require('express-validator/filter')
-const models = require('../db/mongo')
+const router = express.Router()
+const { body, validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
+const models = require('../db/mongo');
+const geolocationUtils = require('geolocation-utils')
 
 
 
