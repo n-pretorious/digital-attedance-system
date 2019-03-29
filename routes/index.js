@@ -1,9 +1,17 @@
 const express = require('express')
+<<<<<<< HEAD
 const router = express.Router()  
 const { body, validationResult } = require('express-validator/check')
 const { sanitizeBody } = require('express-validator/filter')
 const models = require('../db/mongo')
 
+=======
+const router = express.Router()
+const { body, validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
+const models = require('../db/mongo');
+const geolocationUtils = require('geolocation-utils')
+>>>>>>> 56f246cbbf8a162c08b10ab355e4e063a260737d
 
 
 // pages routes
@@ -125,13 +133,17 @@ router.post ('/lecturer/class', function (req, res) {
             unit: req.body.viewUnits,
             lecturer: req.body.lecturer,
             student: req.body.student,
-            startTime: new Date()
+            startTime: req.body.time,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+            radius: req.body.radius
         };
 
         models.Session.create(newClass, function (err, lecture) {
             if (err) {
                 console.log(err);                
             }
+
             lecture.save((err) => {
                 //  return res.redirect('/lecturer/class');
             });
@@ -147,12 +159,28 @@ router.post ('/student/class', function (req, res) {
             errors: errors.array()
         });
     } else {
-        models.Session.findById( req.body._id, function (err, session) {
+        models.Session.findById( req.body._id, function (err, session, next) {
 
-            // adds a student to an ongoing lecture session
-            session.student.push(req.body.student)
-            session.save();
-            console.log(session);
+              //test whether a student is within class dimention
+            const center = {
+                lat: parseFloat(session.latitude), 
+                lon: parseFloat(session.longitude)
+            }
+            const radius = parseInt(session.radius) // meters
+
+            if (geolocationUtils.insideCircle({lat: parseFloat(req.body.latitude), lon: parseFloat(req.body.longitude)}, center, radius) === true) {
+                console.log('within radius')
+                session.student.push(req.body.student)
+                session.save();
+                // console.log(session);
+                // console.log(req.body)
+
+            }else{
+                console.log('outside radius');
+                return res.status(500).json({
+                    message: 'failed to join because you are outside the reach of your class'
+                })
+            }
         })
     }
 })
