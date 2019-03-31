@@ -4,9 +4,10 @@ const path = require('path');
 const mongoose = require('mongoose')
 
 //connecting to database
-mongoose.connect('mongodb+srv://Paula:rerimoi@das-ahzne.gcp.mongodb.net/DAS').DAS;
+mongoose.connect('process.env.mongoDB').DAS;
 
-const routes = require('./routes/index')
+const routes = require('./routes')
+
 
 const app = express();
 let PORT = 5000;
