@@ -3,7 +3,7 @@ const router = express.Router()
 const { validationResult } = require('express-validator/check');
 const models = require('../db/mongo');
 const sanitize = require('../middleware/sanitize')
-const verifyToken = require('../middleware/auth');
+ const verifyToken = require('../middleware/auth');
 const ClassController = require('../controllers/class')
 const UserController = require('../controllers/user')
 
