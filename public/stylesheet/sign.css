@@ -2,9 +2,9 @@
 
  div.main{
     width: 300px;
-    height:550px; 
+    height:580px; 
     /* background: rgba(121, 202, 121, 0.5); */
-    background: rgb(5, 46, 255);
+    background: rgb(4, 26, 136);
 	top: 55%;
 	left: 50%;
 	position: absolute;
@@ -29,7 +29,7 @@ img{
 }
 
 h3{
-    color: #27a465;
+    color: #13f378;
 }
 
 input{
@@ -70,7 +70,7 @@ img{
 
 h3{
     /* color: #27a465; */
-    color: #10e6ea;
+    color: #13f378;
 }
 
 input{
