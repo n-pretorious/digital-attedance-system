@@ -1,33 +1,39 @@
 <% include partials/header %>
-<% include partials/navigation %>
-
-    <div class="col-md-12">
-        <h1><%= title %></h1><br>
-
+<% include partials/navigationStudent %>
+<head>
+    <link rel="stylesheet" href="/stylesheet/studentClass.css">
+</head>
+    <div class="container col-md-8"> 
+       
         <div>            
-            <table id="classesInSession" class="table">
-                <thead>
-                    <tr>
-                        <th>
-                                Classes in Session
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                   
-                    <tr>
-                        <td>
+            
+                            <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Join a class</h1>
+
+  </div>
+</div>
                             <form action="/student/class" method="POST">
-                                <select name="_id" >
-                                    <option value="null">select unit to proceed</option>
-                                    <% data.forEach(function(unit){ %>
-                                        <option value=<%= unit._id  %> > <%= unit.unit %> </option>
-                                    <% }) %>
-                                </select>
-                                <input type="text" name="student" placeholder="enter your adm number">
-                                <input type="text" id="lat" name="latitude" ><input type="text" id="long" name="longitude">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <select name="_id" >
+                                            <option value="null">select unit to proceed</option>
+                                            <% data.forEach(function(unit){ %>
+                                            <option value=<%= unit._id  %> > <%= unit.unit %> </option>
+                                            <% }) %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <input type="text" class="form-control" name="student" placeholder="enter your adm number">
+                                        <input type="text" id="lat" name="latitude" hidden>
+                                        <input type="text" id="long" name="longitude" hidden>
+                                    </div>
+                                </div>
                 
-                                <button type="submit" class="btn btn-lg btn-outline-secondary">Join-Class</button>
+                                <button type="submit" class="btn btn-lg btn-outline-success ">Join-Class</button>
                             </form>
                         </td>
                     </tr>

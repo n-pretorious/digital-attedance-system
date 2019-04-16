@@ -10,13 +10,15 @@ const UserController = require('../controllers/user')
 
 
 
+
 // pages routes
 router.get('/', (req,res) => {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/signup', (req,res) => {res.render('signup',{title: 'Signup page'})})
 router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 
 // lecturers routes
-router.get('/lecturer', verifyToken, (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
+router.get('/views/lecturerHome',  (req,res) => {res.render('lecturerHome')})
+router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
 router.get('/lecturer/class', (req,res) => {
     models.Units.find({}, function (err, data) {
         res.render('class', {
@@ -27,7 +29,9 @@ router.get('/lecturer/class', (req,res) => {
 })
 
 // students routes
-router.get('/student', verifyToken,  (req,res) => {res.render('studentHome', {title: 'Welcome Student'})})
+
+
+router.get('/student',  (req,res) => {res.render('studentHome', {title: 'Welcome Student'})})
 router.get('/student/class', (req,res) => {
     models.Session.find({}, function (err, data) {
         res.render('studentClass', {

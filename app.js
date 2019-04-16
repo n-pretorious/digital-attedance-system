@@ -4,7 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose')
 
 //connecting to database
-mongoose.connect('process.env.mongoDB').DAS;
+mongoose.connect("mongodb+srv://Paula:rerimoi@das-ahzne.gcp.mongodb.net/DAS").DAS;
 
 const routes = require('./routes')
 
