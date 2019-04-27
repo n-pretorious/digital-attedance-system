@@ -7,34 +7,45 @@
 </head>
 
     <title> <%= title %> </title>
+    <!-- <div class="container-fluid">
+      <div class="logo">
+       <nav class="navbar navbar-expand-sm bg-success navbar-light">
+  <a class="navbar-brand" href="#"><img src="" alt="logo"></a>
+   
+  <span class="navbar-text">
+    Digital Attendance System
+  </span>
+  <span><a href="">Sign In</a></span>
+  
+</nav>  </div>   </div>  -->
 
+ 
 
-
-    <div class="container-fluid">
+    <div class="container-fluid  text-center">
     <div class="main">
-      <ul class="tab-group">
+      <!-- <ul class="tab-group1">
         <li class="tab active"><a href="/signup">Sign Up</a></li>
         <li class="tab"><a href="/login">Log In</a></li>
-      </ul>
-      <img src="./images/avatar.png" alt="Avatar" class="avatar">
+      </ul> -->
+      <img src="./images/avatar.png" alt="Avatar" class="avatar1">
 
 
           <form class="signUp" action="signup" method="POST">
           
-          <h3>Create Your Account</h3>
+          <h3 class="h000-mktg lh-condensed mb-3">Create Your Account</h3>
           <p>Enter your email address</br>and your password for join.
           </p>
-          <p><input type="text" name="user_id" placeholder="Insert ID" required></p>
-          <p><input class="emailbox1" type="email" name="email" placeholder="Insert e-mail" autocomplete='off' required></p>
-          <p><input type="password" name="password"  placeholder="Insert Password" required></p>
-          <p><input type="password" name="confirm_password" placeholder="Verify Password" required></p>
-          <p><select name="role">
-            <option value="">Select a Role</option>
+          <p><input type="text" class="form-control form-cotrol-lg input-block" name="user_id" placeholder="Insert ID" required></p>
+          <p><input type="email" class="form-control form-cotrol-lg input-block" name="email" placeholder="Insert e-mail" autocomplete='off' required></p>
+          <p><input type="password" class="form-control form-cotrol-lg input-block" name="password"  placeholder="Insert Password" required></p>
+          <p><input type="password" class="form-control form-cotrol-lg input-block" name="confirm_password" placeholder="Verify Password" required></p>
+          <p><select name="role" class="form-control form-cotrol-lg input-block">
+            <option value="" >Select a Role</option>
             <option value="lecturer">Lecturer</option>
             <option value="student">Student</option>
           </select></p>
-          <button class="btn btn-outline-success " type="reset">Reset</button>
-          <button class="btn btn-outline-success " type="submit">Sign Up</button>
+          <button class="btn btn-success " type="reset">Reset</button>
+          <button class="btn btn-success " type="submit">Sign Up</button>
       </form>           
 
    </div>

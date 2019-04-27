@@ -4,17 +4,17 @@
 <head>
     <link rel="stylesheet" href="/stylesheet/class.css">
 </head>
-            <div class="container col-md-8">
+            <div class="container col-md-8" >
                 <div class="row">
 
     <div class="col-md-12">
         <h1><%= title %></h1><br>
        
         
-            <form action="" method="POST" >
-                <div class="input-group mb-3">
+            <form action="" method="POST">
+                <div class="input-group mb-3 ">
                     <div class="input-group-prepend">
-                        <select id="viewUnits" name="viewUnits">
+                        <select id="viewUnits" name="viewUnits" class="form-control form-cotrol-lg input-block">
                             <option value="null">select unit to proceed</option>
                             <% data.forEach(function(unit){ %>
                                 <option value = <%= unit.code %> > <%= unit.code %> </option>
@@ -41,10 +41,10 @@
                                  </div>
                    </div>  
 
-                <button onclick="handlers.startTime()" type="submit" class="btn btn-lg btn-outline-success">
+                <button onclick="handlers.startTime()" type="submit" class="btn btn-success btn-lg">
                     Start-Class
                 </button>
-                <button onclick="handlers.stopTime()" type="button" class="btn btn-lg btn-outline-success">
+                <button onclick="handlers.stopTime()" type="button" class="btn btn-success btn-lg">
                     End-Class
                 </button>
             </form>
@@ -54,7 +54,7 @@
         <form role="form">       
             <div class="form-group">       
                 <label for="numberOfStudents">
-                    No. of Students
+                    <h3>No of Students</h3>
                 </label>
                 <input type="text" class="form-control" id="exampleInputPassword1" />
             </div>
