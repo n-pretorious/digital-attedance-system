@@ -1,11 +1,14 @@
 
 
+/* div.logo{
+    background: #032f62;
+} */
+
  div.main{
-    width: 300px;
-    height:580px; 
-    /* background: rgba(121, 202, 121, 0.5); */
-    background: rgb(4, 26, 136);
-	top: 55%;
+    width: 500px;
+    height:530px; 
+    background:#032f62;
+	top: 60%;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%,-50%);
@@ -13,23 +16,29 @@
 	padding: 30px 30px ;
 }
 
-img{
+img.avatar1{
     height: 100px; 
     width: 100px; 
     border-radius: 50%;
+    /* border-bottom-style: solid; */
+    border-color: #28a745;
     position: absolute;
-    top: -70px;
-    left: 100px;
+    top: -50px;
+    left: 200px;
 }
 
-.tab-group {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 40px 0;
+            /* .tab-group1 {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px 0;
+            } */
+
+h3.h000-mktg{
+    color: #ffffff;
 }
 
-h3{
-    color: #13f378;
+form.signUp{
+    padding-top: 50px;
 }
 
 input{
@@ -43,34 +52,38 @@ input{
 /* login form */
 
  div.main2{
-    width: 300px;
-    height:500px; 
-    background: rgba(121, 202, 121, 0.5);
-	top: 55%;
+    width: 500px;
+    height:560px; 
+    background:#032f62;
+	top: 60%;
 	left: 50%;
 	position: absolute;
 	transform: translate(-50%,-50%);
 	box-sizing: border-box;
 	padding: 30px 30px ;
 } 
-img{
+img.avatar2{
     height: 100px; 
     width: 100px; 
     border-radius: 50%;
     position: absolute;
     top: -70px;
-    left: 100px;
+    left: 200px;
+}
+form.login{
+    padding-top:100px;
 }
 
-.tab-group {
+/* .tab-group2 {
   list-style: none;
   padding: 0;
   margin: 0 0 40px 0;
-}
+  color: #28a745;
+} */
 
-h3{
-    /* color: #27a465; */
-    color: #13f378;
+h3.heading2{
+    
+    color:#ffffff;
 }
 
 input{
@@ -80,3 +93,7 @@ input{
     padding-left: 30px;
     border-style:inherit;
 }
+p{
+    color: #ffffff;
+}
+
