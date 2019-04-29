@@ -2,7 +2,8 @@ const { validationResult } = require('express-validator/check');
 const models = require('../db/mongo');
 const geolocationUtils = require('geolocation-utils')
 
-exports.class_lecturer = (req, res) => {
+// function for a lecturer to start a class
+exports.class_lecturer_start = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
@@ -13,7 +14,7 @@ exports.class_lecturer = (req, res) => {
             unit: req.body.viewUnits,
             lecturer: req.body.lecturer,
             student: req.body.student,
-            startTime: req.body.time,
+            startTime: new Date().toString(),
             latitude: req.body.latitude,
             longitude: req.body.longitude,
             radius: req.body.radius
@@ -29,10 +30,16 @@ exports.class_lecturer = (req, res) => {
             });
         })
         console.log(newClass);
+
+        // end class 
+    //     models.Session.findById( req.body._id, (err, session, next) => {
+    //         session.student.push(startTime: new Date().toString())
+    //   })
     }
 }
 
-exports.class_student = (req, res) => {
+// function for a student to join a class
+exports.class_student_join = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({

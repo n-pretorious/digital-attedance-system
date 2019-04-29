@@ -4,7 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose')
 
 //connecting to database
-mongoose.connect("mongodb+srv://Paula:rerimoi@das-ahzne.gcp.mongodb.net/DAS").DAS;
+// NB: remember to pass it to nodemon.json
+mongoose.connect('mongodb+srv://Paula:rerimoi@das-ahzne.gcp.mongodb.net/DAS', {useNewUrlParser: true}).DAS;
 
 const routes = require('./routes')
 
