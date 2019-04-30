@@ -22,7 +22,7 @@ router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welco
 router.get('/lecturer/class', (req,res) => {
     models.Units.find({}, function (err, data) {
         res.render('class', {
-            title: 'Welcome To a Class',
+            title: 'Set up a class',
             data: data,
         })
     })
