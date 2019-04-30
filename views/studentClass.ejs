@@ -7,16 +7,17 @@
        
         <div>            
             
-                            <div class="jumbotron jumbotron-fluid">
+                            <div class="jumbotron jumbotron-fluid text-center">
   <div class="container">
     <h1 class="display-4">Join a class</h1>
 
   </div>
 </div>
+<div class="classForm">
                             <form action="/student/class" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <select name="_id"  class="form-control form-cotrol-lg input-block" required  >
+                                        <select name="_id"  class="form-control form-control-lg input-block" required  >
                                             <option value="null" >select unit to proceed</option>
                                             <% data.forEach(function(unit){ %>
                                             <option value=<%= unit._id  %> > <%= unit.unit %> </option>
@@ -27,7 +28,7 @@
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <input type="text" class="form-control" name="student" placeholder="enter your adm number">
+                                        <input type="text" class="form-control form-control-lg" name="student" placeholder="enter your adm number">
                                         <input type="text" id="lat" name="latitude" hidden>
                                         <input type="text" id="long" name="longitude" hidden>
                                     </div>
@@ -35,6 +36,7 @@
                 
                                 <button type="submit" class="btn btn-success btn-lg ">Join-Class</button>
                             </form>
+</div>
                         </td>
                     </tr>
                     
