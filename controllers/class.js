@@ -15,6 +15,7 @@ exports.class_lecturer_start = (req, res) => {
             lecturer: req.body.lecturer,
             student: req.body.student,
             startTime: new Date().toString(),
+            endTime: new Date().toString(),
             latitude: req.body.latitude,
             longitude: req.body.longitude,
             radius: req.body.radius

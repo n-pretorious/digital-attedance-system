@@ -39,7 +39,8 @@
                             <p><input type="text" class="form-control form-control-lg" name="course_code" placeholder="Enter course code"></p>
                              </div>
                    </div>
-                            <p><input type="text" class="form-control form-control-lg" name="time" value="" <% new Date() %>" hidden></p>
+                            <p><input type="text" class="form-control form-control-lg" name="startTime" hidden></p>
+                            <p><input type="text" class="form-control form-control-lg" name="endTime" hidden></p>
                             <p><input type="text" class="form-control form-control-lg" id="lat" name="latitude" hidden ><input type="text" id="long" name="longitude" hidden></p>
                    <div class="input-group-prepend">
                         <div class="input-group-prepend" >         
@@ -48,10 +49,10 @@
                    </div> 
                 </div> 
 
-                <button onclick="handlers.startTime()" type="submit" class="btn btn-success btn-lg">
+                <button type="submit" class="btn btn-success btn-lg">
                     Start-Class
                 </button>
-                <button onclick="handlers.stopTime()" type="button" class="btn btn-success btn-lg">
+                <button type="button" class="btn btn-success btn-lg">
                     End-Class
                 </button>
             </form>
