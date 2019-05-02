@@ -18,9 +18,11 @@
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <select name="_id"  class="form-control form-control-lg input-block" required  >
-                                            <option value="null" >select unit to proceed</option>
+                                            <option value="" >select unit to proceed</option>
                                             <% data.forEach(function(unit){ %>
-                                            <option value=<%= unit._id  %> > <%= unit.unit %> </option>
+                                                <% if (unit.endTime == null) { %>
+                                                    <option value=<%= unit._id  %> > <%= unit.unit %> </option>
+                                                <% } %>
                                             <% }) %>
                                         </select>
                                     </div>
