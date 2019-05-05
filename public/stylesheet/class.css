@@ -2,8 +2,14 @@ body{
     background-image: url('/images/lectureHall.jpg')
 }
 div.classForm{
-    padding-left: 300px;
+    padding-left: 350px;
 }
 h3{
     color:white;
+}
+div.buttons{
+    padding-left: 110px;
+}
+div.container{
+    padding-left: 
 }

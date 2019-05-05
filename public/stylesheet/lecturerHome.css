@@ -1,0 +1,17 @@
+body{
+    background-image: url('/images/lectureHall.jpg')
+}
+
+h3.jumbotron{
+    
+    padding-top: 100px;
+   
+}
+
+div.createClass{
+    padding-top: 100px;
+  
+}
+div.report{
+    padding-top: 100px;
+}

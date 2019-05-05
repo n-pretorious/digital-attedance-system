@@ -8,57 +8,52 @@
 <div class="container col-md-8 text-center">
     <div class="row">
 
-        <div class="col-md-12 text-center">
-            <!-- <h1><%= title %></h1><br> -->
-            <div class="jumbotron jumbotron-fluid text-center">
-                <div class="container">
-                    <h1 class="display-4"><%= title %></h1>
 
-                </div>
-            </div>
-
-            <div class="classForm ">
-                <form action="" method="POST">
-                    <div class="input-group mb-3 ">
-                        <div class="input-group-prepend">
-                            <select id="viewUnits" name="viewUnits" class="form-control form-control-lg input-block" required>
-                                <option value="">select unit to proceed</option>
-                                <% data.forEach(function(unit){ %>
-                                <option value=<%= unit.code %>> <%= unit.code %> </option>
-                                <% }) %>
-                            </select>
+    <div class="col-md-12 text-center">
+               <div class="jumbotron jumbotron-fluid text-center"><h1 class="display-4"><%= title %></h1>
+ </div>
+       
+        <div class="classForm ">
+            <form action="" method="POST">
+                <div class="input-group mb-3 ">
+                    <div class="input-group-prepend">
+                        <select id="viewUnits" name="viewUnits" class="form-control form-control-lg input-block">
+                            <option value="null">select unit to proceed</option>
+                            <% data.forEach(function(unit){ %>
+                                <option value = <%= unit.code %> > <%= unit.code %> </option>
+                                <% }) %>    
+                        </select>
                         </div>
-                    </div>
-
-                <div class="input-group-prepend">
+                        </div>
+                           <div class="input-group-prepend">
                     <div class="input-group-prepend">
                         <p><input type="text" class="form-control form-control-lg" name="lecturer" id="lecturerName"
                                 placeholder="lecturer's name"></p>
                     </div>
                 </div>
                 <div class="input-group-prepend">
-                    <div class="input-group-prepend">
-                        <p><input type="text" class="form-control form-control-lg" name="course_code" placeholder="Enter course code">
-                        </p>
-                    </div>
-                </div>
-                <p><input type="text" class="form-control form-control-lg" name="startTime" hidden></p>
-                <p><input type="text" class="form-control form-control-lg" name="endTime" hidden></p>
-                <p><input type="text" class="form-control form-control-lg" id="lat" name="latitude" hidden><input type="text" id="long"
-                        name="longitude" hidden></p>
-                <div class="input-group-prepend">
-                    <div class="input-group-prepend">
-                        <p><input type="text" class="form-control form-control-lg" name="radius" placeholder="Enter the radius" required></p>
-                    </div>
-                </div>
-                </div>
-                
-                <button type="submit" class="btn btn-success btn-lg" id="firstbutton" onclick="disablefirstbutton()">
+
+                        <div class="input-group-prepend" >
+                            <p><input type="text" class="form-control form-control-lg" name="course_code" placeholder="Enter course code"></p>
+                             </div>
+                   </div>
+                            <p><input type="text" class="form-control form-control-lg" name="startTime" hidden></p>
+                            <p><input type="text" class="form-control form-control-lg" name="endTime" hidden></p>
+                            <p><input type="text" class="form-control form-control-lg" id="lat" name="latitude" hidden ><input type="text" id="long" name="longitude" hidden></p>
+                   <div class="input-group-prepend">
+                        <div class="input-group-prepend" >         
+                            <p><input type="text"class="form-control form-control-lg" name="radius" placeholder="Enter the radius" ></p>
+                                 </div>
+                   </div> 
+                </div> 
+                <div class="buttons">
+                <button  type="submit" class="btn btn-success btn-lg" id="firstbutton" value="click"  onclick="togglefirstbutton()">
                     Start-Class
                 </button>
-                <button type="submit" class="btn btn-success btn-lg" id="secondbutton" onclick="disablesecondbutton()">
+                <button type="button"   class="btn btn-success btn-lg" id="secondbutton" value="click" onclick="togglesecondbutton()" >
                     End-Class
                 </button>
+                </div>
             </form>
 
         </div>
