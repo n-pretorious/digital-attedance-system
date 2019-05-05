@@ -9,13 +9,8 @@
                 <div class="row">
 
     <div class="col-md-12 text-center">
-        <!-- <h1><%= title %></h1><br> -->
-        <div class="jumbotron jumbotron-fluid text-center">
-  <div class="container">
-    <h1 class="display-4"><%= title %></h1>
-
-  </div>
-</div>
+               <div class="jumbotron jumbotron-fluid text-center"><h1 class="display-4"><%= title %></h1>
+ </div>
        
         <div class="classForm ">
             <form action="" method="POST">
@@ -49,13 +44,14 @@
                                  </div>
                    </div> 
                 </div> 
-
-                <button type="submit" class="btn btn-success btn-lg" id="firstbutton" onclick="disablefirstbutton()">
+                <div class="buttons">
+                <button  type="submit" class="btn btn-success btn-lg" id="firstbutton" value="click"  onclick="togglefirstbutton()">
                     Start-Class
                 </button>
-                <button type="button" class="btn btn-success btn-lg" id="secondbutton" onclick="disablesecondbutton()">
+                <button type="button"   class="btn btn-success btn-lg" id="secondbutton" value="click" onclick="togglesecondbutton()" >
                     End-Class
                 </button>
+                </div>
             </form>
 
     </div>
