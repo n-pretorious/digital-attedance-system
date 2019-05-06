@@ -18,6 +18,7 @@ router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 
 // lecturers routes
 router.get('/views/lecturerHome',  (req,res) => {res.render('lecturerHome')})
+router.get('/lecturer/reports',  (req,res) => {res.render('report')})
 router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
 router.get('/lecturer/class', (req,res) => {
     models.Units.find({}, function (err, data) {
