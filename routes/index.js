@@ -79,7 +79,7 @@ router.post ('/register-units', (req, res) => {
 })
 
 // begin a lecture 
-router.post ('/lecturer/class', ClassController.class_lecturer_start)
+router.post ('/lecturer/class', ClassController.class_lecturer)
 
 // students to join lecturers
 router.post ('/student/class', ClassController.class_student_join)
