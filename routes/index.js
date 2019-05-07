@@ -16,17 +16,23 @@ router.get('/signup', (req,res) => {res.render('signup',{title: 'Signup page'})}
 router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 
 // lecturers routes
-router.get('/views/lecturerHome',  (req,res) => {res.render('lecturerHome')})
 router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
 router.get('/lecturer/startClass', (req,res) => {
     models.Units.find({}, function (err, data) {
-        res.render('class', {
+        res.render('startClass', {
             title: 'Set up a class',
             data: data,
         })
     })
 })
-router.get('/lecturer/endClass', (req,res) => {res.render('endClass')})
+router.get('/lecturer/endClass', (req,res) => {
+    models.Session.find({}, function (err, data) {
+        res.render('endClass', {
+            title: 'End a class',
+            data: data,
+        })
+    })
+})
 router.get('/lecturer/reports',  (req,res) => {
     models.Session.find({}, function (err, data) {
         res.render('report', {
@@ -86,7 +92,10 @@ router.post ('/register-units', (req, res) => {
 })
 
 // begin a lecture 
-router.post ('/lecturer/class', ClassController.class_lecturer)
+router.post ('/lecturer/startClass', ClassController.class_lecture_start)
+
+// end a lecture 
+router.post ('/lecturer/endClass', ClassController.class_student_end)
 
 // students to join lecturers
 router.post ('/student/class', ClassController.class_student_join)
