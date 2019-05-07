@@ -1,48 +1,49 @@
 <% include partials/header %>
 <% include partials/navigation %>
 
-<head>
-    <link rel="stylesheet" href="/stylesheet/class.css">
-    <script type='text/javascript' src="/scripts/toggle.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-        href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-</head>
+
 
 <div class="col-sm-9 col-xs-11" id="main">
     <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
     <br>
 
-    <h1 class="jumbotron jumbotron-fluid text-center">End Class</h1>
 
-    <div class="classForm">
-        <form action="/lecturer/endClass" method="POST">
+    <div class="jumbotron jumbotron-fluid text-center">
+        <h1>End Class</h1>
 
-            <div class=input-group>
-                <!-- <select class="selectpicker" data-show-subtext="true" data-live-search="true"> -->
-                <select name="_id" class="form-control form-control-lg input-block" required>
-                    <option selected disabled>select unit to proceed</option>
-                    <% data.forEach(function(unit){ %>
-                    <% if (unit.endTime == "") { %>
-                    <option value=<%= unit._id  %>> <%= unit.unit %> </option>
-                    <% } %>
-                    <% }) %>
-                </select>
-            </div>
+        <br>
+        <div class="classForm">
+            <form action="" method="POST">
+                <center>
+                    <div class="form-group">
+                        <label>Select a class to End</label>
+                        <select onchange="alert('Class Selected')" id="select-single" style="width:70% !important;" placeholder="Choose one thing"
+                            data-allow-clear="1">
+                            <option disabled selected>-- select session --</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-success btn-lg " data-style="expand-left" id="secondbutton">
+                        End-Class
+                    </button>
+                </center>
+
+            </form>
+        </div>
 
     </div>
-    <div class="m-1 p-5">
-        <center><button type="submit" class="btn btn-success btn-lg " data-style="expand-left" id="secondbutton">
-                End-Class
-            </button></center>
 
-    </div>
-    </form>
+
+
+
+
+
+
 </div>
-<!-- hey i found this one and put them here so that it would be easy for you to remove or edit -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 
 
 <% include partials/footer %>

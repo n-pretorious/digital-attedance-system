@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Rerimoi/DAS#readme",
   "dependencies": {
+    "@ttskch/select2-bootstrap4-theme": "^1.2.2",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",

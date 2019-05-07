@@ -22,7 +22,10 @@ html, body {
 #sidebar {
     background-color: #032f62;
     min-height: 100%;
-    padding: 30px;
+    padding-right:40px;
+    padding-top:30px;
+    padding-left:5px;
+
     overflow: hidden;
     -webkit-transition: width 0.3s ease-in;
     -moz-transition: width 0.3s ease-in;
