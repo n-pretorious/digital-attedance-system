@@ -20,7 +20,7 @@ router.get('/views/lecturerHome',  (req,res) => {res.render('lecturerHome')})
 router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
 router.get('/lecturer/startClass', (req,res) => {
     models.Units.find({}, function (err, data) {
-        res.render('class', {
+        res.render('startClass', {
             title: 'Set up a class',
             data: data,
         })
