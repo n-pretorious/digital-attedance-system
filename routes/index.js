@@ -18,7 +18,7 @@ router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 // lecturers routes
 router.get('/views/lecturerHome',  (req,res) => {res.render('lecturerHome')})
 router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
-router.get('/lecturer/class', (req,res) => {
+router.get('/lecturer/startClass', (req,res) => {
     models.Units.find({}, function (err, data) {
         res.render('class', {
             title: 'Set up a class',
@@ -26,6 +26,7 @@ router.get('/lecturer/class', (req,res) => {
         })
     })
 })
+router.get('/lecturer/endClass', (req,res) => {res.render('endClass')})
 router.get('/lecturer/reports',  (req,res) => {
     models.Session.find({}, function (err, data) {
         res.render('report', {
