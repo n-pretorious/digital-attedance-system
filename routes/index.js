@@ -17,12 +17,19 @@ router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 
 // lecturers routes
 router.get('/views/lecturerHome',  (req,res) => {res.render('lecturerHome')})
-router.get('/lecturer/reports',  (req,res) => {res.render('report')})
 router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
 router.get('/lecturer/class', (req,res) => {
     models.Units.find({}, function (err, data) {
         res.render('class', {
             title: 'Set up a class',
+            data: data,
+        })
+    })
+})
+router.get('/lecturer/reports',  (req,res) => {
+    models.Session.find({}, function (err, data) {
+        res.render('report', {
+            title: 'Lectures report',
             data: data,
         })
     })

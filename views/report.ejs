@@ -2,72 +2,70 @@
 <% include partials/navigation%>
 
 
-    
-        
-          <div class="col-sm-9 col-xs-11" id="main">
-                <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
-                <br>
-                
-                <div class="form-group">
-                        <label for="category">Select Category</label>
-                        <select class="select form-control" id="CategoryOfUnitsAttendance">
-                            <option selected disabled> -- SELECT UNIT --</option>
-                            
-                          <option value="english">English</option>
-                            <option value="swahili">KISWAHILI</option>
-                        </select>
-                </div>
-        
-        <div class="m-5 pb-5">
-            <button class="btn btn-success btn-lg" type="button"><i  class="fa fa-eye"></i> View  </button>
-            <button class="btn btn-success btn-lg" type="button"><i  class="fa fa-print"></i> Print</button>
-        </div>
-   
-    
 
-<div class="m-5 pb-5">
-<table class="table table-light">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Admission number</th>
-      <th scope="col">Name</th>
-       </tr>
-      
-   
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      
-    </tr>
-  </tbody>
-</table>
+
+<div class="col-sm-9 col-xs-11" id="main">
+  <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
+  <br>
+
+  <div class="form-group">
+    <label for="category">Select Category</label>
+    <select class="select form-control" id="CategoryOfUnitsAttendance" required>
+        <option selected disabled> -- SELECT --</option>
+        <% data.forEach(function(unit){ %>
+        <option value=<%= unit._id  %> <%= unit._id  %>> <%= unit.lecturer %> <%= unit.unit  %> </option>
+        <% }) %>
+      </select>
+  </div>
+
+  <div class="m-5 pb-5">
+    <button class="btn btn-success btn-lg" type="button"><i class="fa fa-eye"></i> View </button>
+    <button class="btn btn-success btn-lg" type="button"><i class="fa fa-print"></i> Print</button>
+  </div>
+
+
+
+  <div class="m-5 pb-5">
+    <table class="table table-light">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Admission number</th>
+          <th scope="col">Name</th>
+        </tr>
+
+
+      </thead>
+      <tbody>
+          <% for(let i=0; i < unit.student.length; i++) { %>
+            <tr>
+              <th scope="row"><%= [i] %></th>
+              <td><%= unit[i].student %></td>
+            </tr>
+         <% } %>
+
+         
+        <!-- <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
 </div>
- </div>
-
-
-
-
-
-
-
-
-
-
 
 <%include partials/footer %>
