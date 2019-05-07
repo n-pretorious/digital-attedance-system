@@ -14,7 +14,7 @@
             <div class="m-5 p-0">
                 
                    <p> <select name="_id"  class="form-control form-control-lg input-block" required>
-                        <option value="" >select unit to proceed</option>
+                        <option selected disabled >select unit to proceed</option>
                          <% data.forEach(function(unit){ %>
                              <% if (unit.endTime == null) { %>
                                  <option value=<%= unit._id  %> > <%= unit.unit %> </option>
