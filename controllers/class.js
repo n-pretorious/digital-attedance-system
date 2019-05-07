@@ -3,7 +3,7 @@ const models = require('../db/mongo');
 const geolocationUtils = require('geolocation-utils')
 
 // function for a lecturer to start a class
-exports.class_lecturer = async (req, res) => {
+exports.class_lecture_start = (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
@@ -16,7 +16,7 @@ exports.class_lecturer = async (req, res) => {
             lecturer: req.body.lecturer,
             student: req.body.student,
             startTime: new Date().toString(),
-            endTime: null,
+            endTime: "",
             latitude: req.body.latitude,
             longitude: req.body.longitude,
             radius: req.body.radius
@@ -24,31 +24,41 @@ exports.class_lecturer = async (req, res) => {
 
         models.Session.create(newClass, (err, lecture) => {
             if (err) {
-                console.log(err);                
+                console.log(err)               
             }
 
             lecture.save((err) => {
-                 return res.redirect('/lecturer/class');
+                 return res.redirect('/lecturer/StartClass');
             });
         })
         console.log(newClass)
-
-
-        // get a class that has just been created above 
-        let classInSession = await models.Session.find({ startTime: newClass.startTime })
-        // console.log(classInSession)
-
-        // update end time of a class when lecturer clicks the End-Elass button
-    //     models.Session.findById( classInSession._id, (err, session, next) => {
-    //         session.endTime.push(new Date())
-    //         session.save() 
-    //   })
     }
+}
+
+// function to end class
+exports.class_student_end = (req, res) => {
+    models.Session.findById(req.body._id, (err, session) => {
+        console.log(req.body._id)
+            if (err) {
+                console.log(err)
+            }
+            console.log(session)
+            
+            session.endTime = new Date()
+            session.save((err) => {
+                if (err) {
+                    console.log(err)
+                }
+
+                console.log(session)
+                res.redirect('/lecturer/startClass')
+            })
+    })
 }
 
 // function for a student to join a class
 exports.class_student_join = (req, res) => {
-    const errors = validationResult(req);
+    const errors = validationResult(req)
     if (!errors.isEmpty()) {
         return res.status(422).json({
             errors: errors.array()
