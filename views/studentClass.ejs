@@ -3,49 +3,49 @@
 <head>
     <link rel="stylesheet" href="/stylesheet/studentClass.css">
 </head>
-    <div class="container col-md-8"> 
-       
-        <div>            
-            
-                            <div class="jumbotron jumbotron-fluid text-center">
-  <div class="container">
-    <h1 class="display-4">Join a class</h1>
 
-  </div>
-</div>
-<div class="classForm">
-                            <form action="/student/class" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <select name="_id"  class="form-control form-control-lg input-block" required  >
-                                            <option value="" >select unit to proceed</option>
-                                            <% data.forEach(function(unit){ %>
-                                                <% if (unit.endTime == null) { %>
-                                                    <option value=<%= unit._id  %> > <%= unit.unit %> </option>
-                                                <% } %>
-                                            <% }) %>
-                                        </select>
-                                    </div>
-                                </div>
+<div class="col-sm-9 col-xs-11" id="main">
+    <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a><br>
 
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <input type="text" class="form-control form-control-lg" name="student" placeholder="enter your adm number">
-                                        <input type="text" id="lat" name="latitude" hidden>
-                                        <input type="text" id="long" name="longitude" hidden>
-                                    </div>
-                                </div>
+    <h1 class="jumbotron jumbotron-fluid text-center">Join a class</h1>
+    
+    <div class="m-responsive">
+        <form action="/student/class" method="POST">
+            <div class="m-5 p-0">
                 
-                                <button type="submit" class="btn btn-success btn-lg ">Join-Class</button>
+                   <p> <select name="_id"  class="form-control form-control-lg input-block" required>
+                        <option value="" >select unit to proceed</option>
+                         <% data.forEach(function(unit){ %>
+                             <% if (unit.endTime == null) { %>
+                                 <option value=<%= unit._id  %> > <%= unit.unit %> </option>
+                                 <% } %>
+                                  <% }) %>
+                    </select>
+                    </p>
+                    </div>
+                
+            
+            
+             <div class="m-5 p-0">
+                  <p>
+                       <input type="text" class="form-control form-control-lg" name="student" placeholder="enter your adm number">
+                     </p>
+                     </div>
+                      <div class="m-5 p-0">
+                     <p> 
+                         <input type="text" class="form-control form-control-lg" name="student" placeholder="enter your full name">
+                        </p>
+                        </div>
+        </div>
+        <div class=""col-md-6"">
+           <center> <button type="submit" class="btn btn-success btn-lg ">Join-Class</button></center>
+        </div>
                             </form>
 </div>
-                        </td>
-                    </tr>
                     
-                </tbody>
-            </table>    
+                      
         </div>
         
-    </div>
+   
     
 <% include partials/footer %>
