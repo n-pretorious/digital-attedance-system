@@ -5,6 +5,7 @@ html, body {
 
 .wrapper {
    height: 100%;
+   width: 100%;
    margin-left:0;
    margin-right:0;
    padding-left:0;
@@ -14,14 +15,14 @@ html, body {
 .row-offcanvas {
     position: relative;
     margin-left:0;
-    margin-right:0;
+    margin-right:30px;
     height: 100%;
 }
 
 #sidebar {
     background-color: #032f62;
     min-height: 100%;
-    padding: 15px;
+    padding: 30px;
     overflow: hidden;
     -webkit-transition: width 0.3s ease-in;
     -moz-transition: width 0.3s ease-in;
@@ -103,6 +104,7 @@ html, body {
   }
   
 }
+
 a{
    color:  #28a745;
 }
