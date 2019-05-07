@@ -18,7 +18,7 @@
                 
                     <div class="m-5 p-0">
                         <select id="viewUnits" name="viewUnits" class="form-control form-control-lg input-block">
-                            <option value="null">select unit to proceed</option>
+                            <option selected disabled>select unit to proceed</option>
                             <% data.forEach(function(unit){ %>
                                 <option value = <%= unit.code %> > <%= unit.code %></option>
                                 <% }) %>     
@@ -30,19 +30,13 @@
                         <p><input type="text" class="form-control form-control-lg" name="lecturer" id="lecturerName"
                                 placeholder="lecturer's name"></p>
                     </div>
-                
-                
-
-                        <div class="m-5 p-0" >
-                            <p><input type="text" class="form-control form-control-lg" name="course_code" placeholder="Enter course code"></p>
-                             </div>
-                   
+                       
                             <p><input type="text" class="form-control form-control-lg" name="startTime" hidden></p>
                             <p><input type="text" class="form-control form-control-lg" name="endTime" hidden></p>
                             <p><input type="text" class="form-control form-control-lg" id="lat" name="latitude" hidden ><input type="text" id="long" name="longitude" hidden></p>
                    
                         <div class="m-5 p-0" >         
-                            <p><input type="text"class="form-control form-control-lg" name="radius" placeholder="Enter the radius" ></p>
+                            <p><input type="text"class="form-control form-control-lg" name="radius" placeholder="Set the radius" ></p>
                                  </div>
                    
                    </form>
