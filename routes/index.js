@@ -12,7 +12,6 @@ const UserController = require('../controllers/user')
 
 
 // pages routes
-router.get('/', (req,res) => {res.render('dashboard', {title: 'Class Attendance Tracking System'})})
 router.get('/signup', (req,res) => {res.render('signup',{title: 'Signup page'})})
 router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 
