@@ -10,7 +10,6 @@ exports.class_lecture_start = (req, res) => {
             errors: errors.array()
         });
     } else {
-        
         let newClass = {
             unit: req.body.viewUnits,
             lecturer: req.body.lecturer,
@@ -36,21 +35,28 @@ exports.class_lecture_start = (req, res) => {
 }
 
 // function to end class
-exports.class_student_end = (req, res) => {
-    models.Session.findById(req.body._id, (err, session) => {
-        console.log(req.body._id)
+//end class as a lecturer
+
+exports.lecturer_ends_class = (req, res) => {
+    
+    models.Session.findById(req.body.EndClassSession, (err, Session) => {
+        
+        console.log('Fetching the Class Session....')
+        console.log(req.body.EndClassSession)
             if (err) {
                 console.log(err)
             }
-            console.log(session)
+            console.log(Session)
             
-            session.endTime = new Date()
-            session.save((err) => {
+            Session.endTime = new Date()
+            Session.save((err) => {
                 if (err) {
                     console.log(err)
+                }else{
+                    console.log("Lecture has been ended successfully")
                 }
 
-                console.log(session)
+                console.log(Session)
                 res.redirect('/lecturer/startClass')
             })
     })
