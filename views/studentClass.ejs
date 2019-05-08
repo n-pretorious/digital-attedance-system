@@ -5,32 +5,30 @@
     <link rel="stylesheet" href="/stylesheet/studentClass.css">
 </head>
 
-<div class="col-sm-9 col-xs-11" id="main">
+<div class="col-sm-8 col-xs-10" id="main">
     <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a><br>
 
-    <h1 class="jumbotron jumbotron-fluid text-center">Join a class</h1>
+    <div class="jumbotron jumbotron-fluid text-center"><h1>Join a class</h1>
 
     <div class="classForm">
         <form action="/student/class" method="POST">
             <div class="m-5 p-0">
 
-                <p> <select name="_id" class="form-control form-control-lg input-block" required>
-                        <option selected disabled>select unit to proceed</option>
+                 <select name="_id" class="form-control form-control-lg input-block" required>
+                        
+                        <option selected disabled>Select unit to proceed</option>
                         <% data.forEach(function(unit){ %>
                         <% if (unit.endTime == null) { %>
                         <option value=<%= unit._id  %>> <%= unit.unit %> </option>
                         <% } %>
                         <% }) %>
                     </select>
-                </p>
+                
             </div>
-
-
-
-            <div class="m-5 p-0">
+            <div class="m-5 p-0 ">
                 <p>
                     <input type="text" class="form-control form-control-lg" name="student"
-                        placeholder="enter your adm number">
+                        placeholder="Enter your adm number">
                 </p>
             </div>
             <div class="m-5 p-0">
@@ -38,9 +36,9 @@
                 <input type="text" id="long" name="longitude" hidden>
             </div>
     </div>
-    <div class="" col-md-6"">
+
         <center> <button type="submit" class="btn btn-success btn-lg ">Join-Class</button></center>
-    </div>
+   
     </form>
 </div>
 
