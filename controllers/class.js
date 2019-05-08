@@ -28,7 +28,7 @@ exports.class_lecture_start = (req, res) => {
             }
 
             lecture.save((err) => {
-                 return res.redirect('/lecturer/StartClass');
+                 return res.redirect('/lecturer/endClass');
             });
         })
         console.log(newClass)
