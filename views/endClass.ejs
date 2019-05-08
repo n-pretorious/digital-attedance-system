@@ -13,21 +13,22 @@
 
         <br>
         <div class="classForm">
-            <form action="" method="POST">
+            <form action="/lecturer/endClass" method="POST">
                 <center>
                     <div class="form-group">
                         <label>Select a class to End</label>
-                        <select onchange="alert('Class Selected')" id="select-single" style="width:70% !important;" placeholder="Choose one thing"
-                            data-allow-clear="1">
-                            <option disabled selected>-- select session --</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select id="select-single" name="EndClassSession" style="width:70% !important;"
+                            placeholder="Choose one thing" data-allow-clear="1">
+                            <% if(data.length>0){%>
+                            <option disabled selected>-- SELECT SESSION --</option>
+                            <% data.forEach(function(unit){ %>
+                            <option value=<%= unit._id %>> <%= unit.unit %></option>
+                            <% })}else{ %>
+                            <option>No Active Lectures</option>
+                            <% }%>
                         </select>
                     </div>
-                    <button type="button" class="btn btn-success btn-lg " data-style="expand-left" id="secondbutton">
+                    <button type="submit" class="btn btn-success btn-lg " data-style="expand-left" id="secondbutton">
                         End-Class
                     </button>
                 </center>
