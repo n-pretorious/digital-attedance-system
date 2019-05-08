@@ -1,14 +1,40 @@
+<html>
+
 <head>
+    <meta charset="UTF-8">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheet/navigation.css">
+
+    <link rel="stylesheet" href="/stylesheet/select2.css">
+    <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.min.css"
+        rel="stylesheet">
+
 </head>
 
-   <div>
-<!-- The sidebar -->
-<nav class="sidebar">
-  <a href="/views/lecturerHome.ejs"><i class="fa fa-fw fa-university"></i> Home</a>
-  <a href="/views/class.ejs"><i class="fa fa-fw 	fa-mortar-board"></i> Class</a>
-  <a href="#Reports"><i class="fa fa-fw fa-book"></i> Reports</a>
-  <a href="/views/login.ejs"><i class="fa fa-fw fa-power-off"></i> Log out</a>
-</nav>
-</div>
+<body>
+
+
+    <div class="wrapper container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <!-- sidebar -->
+            <div class="col-sm-3 col-xs-1 sidebar-offcanvas" id="sidebar">
+                <div class="p-2"><a href="/lecturer"><i class="fa fa-university fa-lg"></i><span
+                            class="collapse in hidden-xs-down">Home</span></a><br></div>
+                <div class="p-2"><a href="/lecturer/add-new-unit"><i class="fa fa-fw fa-plus fa-lg"></i><span
+                            class="collapse in hidden-xs-down">Add New Unit</span></a><br></div>
+                <div class="p-2"><a href="/lecturer/startClass"><i class="fa fa-fw fa-play fa-lg"></i><span
+                            class="collapse in hidden-xs-down">Start Class</span></a><br></div>
+                <div class="p-2"><a href="/lecturer/endClass"><i class="fa fa-fw fa-stop fa-lg"></i><span
+                            class="collapse in hidden-xs-down"> End Class</span></a><br></div>
+                <div class="p-2"> <a href="/lecturer/reports"><i class="fa fa-fw 	fa-book fa-lg"></i><span
+                            class="collapse in hidden-xs-down">reports</span></a><br></div>
+                <div class="p-2"> <a href="/login"><i class="fa fa-fw fa-sign-out fa-lg"></i><span
+                            class="collapse in hidden-xs-down">Log Out</span></a></div>
+            </div>
+
+
+
+            <!-- /sidebar -->

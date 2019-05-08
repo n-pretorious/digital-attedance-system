@@ -52,7 +52,8 @@ const classSchema = new Schema({
   unit: String,
   lecturer: String,
   student: [{type: String}],
-  time: String,
+  startTime: String,
+  endTime: String,
   latitude: String,
   longitude: String,
   radius: String

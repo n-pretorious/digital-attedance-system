@@ -1,3 +1,4 @@
 
 /node_modules
 nodemon.json
+/public/stylesheet/select2

@@ -1,38 +1,113 @@
-/* Style the sidebar - fixed full height */
-.sidebar {
-  height: 100%;
-  width: 215px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color:#120f68;
-  overflow-x: hidden;
-  padding-top: 16px;
+html, body {
+   height: 100%;
+   background-image: url(/images/lectureHall.jpg);
 }
 
-/* Style sidebar links */
-.sidebar a {
-  padding: 15px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #13f378;
-  display: block;
+.wrapper {
+   height: 100%;
+   width: 100%;
+   margin-left:0;
+   margin-right:0;
+   padding-left:0;
+   padding-right:0;
 }
 
-/* Style links on mouse-over */
-.sidebar a:hover {
-  color: #f1f1f1;
+.row-offcanvas {
+    position: relative;
+    margin-left:0;
+    margin-right:30px;
+    height: 100%;
 }
 
-/* Style the main content */
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
+#sidebar {
+    background-color: #032f62;
+    min-height: 100%;
+    padding-right:40px;
+    padding-top:30px;
+    padding-left:5px;
+
+    overflow: hidden;
+    -webkit-transition: width 0.3s ease-in;
+    -moz-transition: width 0.3s ease-in;
+    transition: width 0.3s ease-in;
+    z-index: 1;
 }
 
-/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+#sidebar span.collapse.in {
+    display: inline;
+}
+
+#sidebar .nav .nav-item .nav-link {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#main {
+    padding: 15px;
+    left: 0;
+}
+
+/*
+ * off canvas sidebar
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 34em) {
+    #sidebar {
+       min-width: 43px;
+       -webkit-transition: all 0.4s ease-in-out;
+       -moz-transition: all 0.4s ease-in-out;
+       transition: all 0.4s ease-in-out;
+    }
+    
+    #main {
+        width: 60%;
+    }
+    
+    .row-offcanvas-left.active .sidebar-offcanvas span.collapse {
+       display: inline !important;
+    }
+    
+    .row-offcanvas-left.active {
+       left: 40%;
+    }
+    
+    .row-offcanvas-left.active .sidebar-offcanvas {
+       left: -40%;
+       position: absolute;
+       top: 0;
+       width: 40%;
+    }
+    
+    .row-offcanvas-left.active #main {
+       width: 60%;
+    }
+    
+    /* sidebar link text always visible when active */
+    .row-offcanvas-left.active .sidebar-offcanvas span.collapse.in {
+        display: inline !important;
+    }
+    
+} 
+ 
+ 
+@media screen and (min-width: 34em) {
+  .row-offcanvas-left.active {
+    left: 43px;
+    width: 97%;
+    width: calc(100% - 43px);
+  }
+
+  .row-offcanvas-left.active .sidebar-offcanvas {
+    left: -43px;
+    position: absolute;
+    top: 0;
+    width: 43px;
+    text-align: center;
+    min-width: 43px;
+  }
+  
+}
+
+a{
+   color:  #28a745;
 }

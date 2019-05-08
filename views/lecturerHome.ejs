@@ -1,18 +1,31 @@
-<% include partials/header %>
 <% include partials/navigation %>
 
-    <div class=" container col-md-8">
-        <div class="row">
-            <div class=" main col-md-12">
+<!-- main right col -->
+<div class="col-sm-9 col-xs-11" id="main">
+    <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
+    <br>
 
-                <h3 class="text-center text-success">
-                    WELCOME LECTURER!
-                </h3> 
-                <a href="/lecturer/class"><button type="button" class="btn btn-outline-primary btn-lg btn-block">CLASS</button></a> 
-                <a href="#"><button type="button" class="btn btn-lg btn-outline-primary btn-block">REPORT</button></a>
-            </div>
+
+
+    <h3 class="jumbotron jumbotron-fluid text-center">
+        Welcome to the Digital Attendance System
+        <p class="sub-title"> Lecturer's panel</p> <br>
+         <div class="row">
+        <div class="col-md-6">
+            <center><a href="/lecturer/class"><button type="button" class="btn btn-success btn-lg">CLASS</button></a>
+            </center>
         </div>
-      </div>
-    
+        <div class="col-md-6">
+            <center><a href="/lecturer/reports"><button type="button"
+                        class="btn  btn-success btn-lg">REPORT</button></a>
+            </center>
+
+        </div>
+    </div>
+</h3>
+</div>
+
+
+
 
 <% include partials/footer %>

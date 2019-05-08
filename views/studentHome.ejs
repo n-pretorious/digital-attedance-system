@@ -1,17 +1,21 @@
 <% include partials/header %>
 <% include partials/navigationStudent %>
+<head>
+    <link rel="stylesheet" href="/stylesheet/studentHome.css">
+</head>
 
-    <div class="container-fluid col-md-8">
-        <div class="row">
-            <div class="col-md-12">
-
-                <h3 class="text-center text-success">
-                    WELCOME STUDENT!
-                </h3> 
-                <!-- <a href="/register-units"><button onclick="" type="button" class="btn btn-outline-primary btn-lg btn-block"></a>REGISTER UNITS</button></a>  -->
-                <a href="/student/class"><button type="button" class="btn btn-outline-primary btn-lg btn-block">CLASS</button></a>
-            </div>
-        </div>
-    </div>    
+    <div class="col-sm-9 col-xs-11" id="main">
+                <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
+                <br>
+                <h3 class=" jumbotron jumbotron-fluid text-center ">
+                    Welcome to the Digital Attendance system
+                     <p>student's panel  </p>
+                </h3>
+                
+                <div class="m-5 p-1">
+                     <center><a href="/student/class"><button type="button" class="btn btn-success btn-lg btn-block">CLASS</button></a></center>
+                </div>
+    </div>
+        
 
 <% include partials/footer %>

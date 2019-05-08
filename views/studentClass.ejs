@@ -1,47 +1,65 @@
-<% include partials/header %>
 <% include partials/navigationStudent %>
+
 <head>
     <link rel="stylesheet" href="/stylesheet/studentClass.css">
 </head>
-    <div class="container col-md-8"> 
-       
-        <div>            
-            
-                            <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Join a class</h1>
 
-  </div>
-</div>
-                            <form action="/student/class" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <select name="_id" >
-                                            <option value="null">select unit to proceed</option>
-                                            <% data.forEach(function(unit){ %>
-                                            <option value=<%= unit._id  %> > <%= unit.unit %> </option>
-                                            <% }) %>
-                                        </select>
-                                    </div>
-                                </div>
+<div class="col-sm-8 col-xs-10" id="main">
+    <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a><br>
 
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <input type="text" class="form-control" name="student" placeholder="enter your adm number">
-                                        <input type="text" id="lat" name="latitude" hidden>
-                                        <input type="text" id="long" name="longitude" hidden>
-                                    </div>
-                                </div>
-                
-                                <button type="submit" class="btn btn-lg btn-outline-success ">Join-Class</button>
-                            </form>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>    
+    <div class="jumbotron jumbotron-fluid text-center">
+        <h1>Join a class</h1>
+
+        <div class="classForm">
+            <form action="/student/class" method="POST">
+                <div class="m-5 p-0">
+
+                    <select name="_id" class="form-control form-control-lg input-block" required>
+
+                        <% if(data.length>0){%>
+                        <option selected disabled>Select unit to proceed</option>
+                        <% data.forEach(function(unit){ 
+                            <!-- Set Class End time as a variable -->
+                            var ClassEndTime = unit.endTime;
+                            <!-- If end time comes as an empty string, set it to zero 0 -->
+                            if(ClassEndTime.length < 1 ){
+                                ClassEndTime = 0; 
+                            }
+                            console.log(ClassEndTime)
+                            %>
+                        <% if (ClassEndTime===0) { %>
+                        <option value=<%= unit._id  %>> <%= unit.unit %> </option>
+                        <% }else{%>
+                        <option disabled>No Active Classes</option>
+                        <%}
+                         %>
+                        <% })}else{ %>
+                        <option disabled>There are no Lectures</option>
+                        <%}
+                         %>
+                    </select>
+
+                </div>
+                <div class="m-5 p-0 ">
+                    <p>
+                        <input type="text" class="form-control form-control-lg" name="student"
+                            placeholder="Enter your adm number">
+                    </p>
+                </div>
+                <div class="m-5 p-0">
+                    <input type="text" id="lat" name="latitude" hidden>
+                    <input type="text" id="long" name="longitude" hidden>
+                </div>
         </div>
-        
+
+        <center> <button type="submit" class="btn btn-success btn-lg ">Join-Class</button></center>
+
+        </form>
     </div>
-    
+
+
+</div>
+
+
+
 <% include partials/footer %>
