@@ -7,27 +7,28 @@
 <div class="col-sm-9 col-xs-11" id="main">
   <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
   <br>
-
+<div class="jumbotron jumbotron-fluid text-center"><h1>Generate Report</h1>
   <div class="form-group">
-    <label for="category">Select Category</label>
-    <select class="select form-control" id="CategoryOfUnitsAttendance" required>
+     <!-- <select name="_id" class="form-control form-control-lg input-block" required></select> -->
+   
+    <select class=" form-control form-control-lg input-block" id="CategoryOfUnitsAttendance" required>
         <option selected disabled> -- SELECT --</option>
         <% data.forEach(function(unit){ %>
         <option value=<%= unit._id  %> <%= unit._id  %>> <%= unit.lecturer %> <%= unit.unit  %> </option>
         <% }) %>
       </select>
-  </div>
-
-  <div class="m-5 pb-5">
-    <button class="btn btn-success btn-lg" type="button"><i class="fa fa-eye"></i> View </button>
+      
+      <div class="m-5 pb-5">
+    <button class="btn btn-success btn-lg" type="button" onclick=""><i class="fa fa-eye"></i> View </button>
     <button class="btn btn-success btn-lg" type="button"><i class="fa fa-print"></i> Print</button>
   </div>
 
-
-
-  <div class="m-5 pb-5">
+  </div>
+  </div>
+ <!-- <div class="m-5 pb-5">
     <table class="table table-light">
-      <thead class="thead-dark">
+      <thead class="thead-light">
+        <tr>"CLASS NAME" BY "LECTURER NAME" ON "DATE" </tr>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Admission number</th>
@@ -36,7 +37,7 @@
 
 
       </thead>
-      <tbody>
+      <tbody> -->
         
          
         <!-- <tr>
@@ -58,8 +59,6 @@
 
         </tr> -->
       <!-- </tbody> -->
-    </table>
-  </div>
-</div>
-
+    <!-- </table>
+  </div> -->
 <%include partials/footer %>
