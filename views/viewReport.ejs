@@ -1,0 +1,49 @@
+<% include partials/navigation %>
+
+<head>
+    <link rel="stylesheet" href="/stylesheet/studentClass.css">
+</head>
+
+<div class="col-sm-8 col-xs-10" id="main">
+    <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a><br>
+
+    <div class="jumbotron jumbotron-fluid text-center">
+       
+            <div class="m-5 pb-5">
+                <table class="table table-light" name="reportTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Admission number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" id="student">
+                                <%data.forEach(function(unit){ %>
+                                <td>
+
+                                <%for (let i = 0; i < data.length; i++){ %>
+                                <% [i]%>
+                                <% } %></td>
+                                <td><%=unit.student%></td>
+                                <% })%>
+                            </th>
+
+                        </tr>
+                        <!-- <tr> -->
+                            <!-- <td>
+                            <% data.forEach(function(unit){ %>
+                                <%unit.student%></td> <%}) %> -->
+
+                                <!-- <% data.forEach(function(unit){ %>
+                                <%=unit.student%></td><%}) %> -->
+                        <!-- </tr> -->
+                    </tbody>
+                </table>
+            </div>
+      
+    </div>
+</div>
+
+<% include partials/footer %>

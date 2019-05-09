@@ -1,0 +1,30 @@
+<% include partials/navigation %>
+
+<head>
+    <link rel="stylesheet" href="/stylesheet/studentClass.css">
+</head>
+
+<div class="col-sm-8 col-xs-10" id="main">
+    <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a><br>
+
+    <div class="jumbotron jumbotron-fluid text-center">
+        <form action="/lecturer/delete-unit" method="POST">
+
+            <h3>Delete Unit</h3>
+
+            <div class="container text-center" style="width:70% !important; text-align: center !important;">
+
+                <div class="form-group">
+                    <label for="deleteUnitCodeField">Enter Unit Code</label>
+                    <input type="text" class="form-control" name="code" placeholder="Enter Unit Code" id="deleteUnitCodeField" required>
+                </div>
+                <button id="resetUnitsButton" class="btn btn-outline-dark pull-left" type="reset">Reset</button>
+                <button class="btn btn-success pull-right" type="submit">Delete</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+<% include partials/footer %>

@@ -47,6 +47,9 @@ exports.class_lecture_start = (req, res) => {
         console.log(newClass)
     }
 }
+// function to delete unit
+
+
 
 // function to end class
 //end class as a lecturer
@@ -95,19 +98,12 @@ exports.class_student_join = (req, res) => {
 
             if (geolocationUtils.insideCircle({ lat: parseFloat(req.body.latitude), lon: parseFloat(req.body.longitude) }, center, radius) === true) {
                 console.log('within radius')
+                console.log(req.body.admNumber)
                 session.student.push(req.body.admNumber)
                 session.save()
-
-                console.log(req.body.admNumber)
-
-                // console.log(session);
-                // console.log(req.body)
-
+                res.redirect('/student')
             } else {
                 console.log('outside radius');
-                // var popup = require('popups');
-
-                // popup.alert({ content: 'Failed to join class because you are outside the reach of your class' })
                 return res.status(500).json({
                     message: 'failed to join because you are outside the reach of your class'
                 })
@@ -118,30 +114,4 @@ exports.class_student_join = (req, res) => {
 
 
 
-// lecturer to generate report
-exports.lecturer_print_report = (req, res) => {
-    models.Session.find({ _id: req.body.CategoryOfUnitsAttendance, lectureDate: req.body.CategoryOfLectureDates }, function (err, Session) {
 
-
-        Session._id;
-        Session.lectureDate;
-
-        //  console.log(req.body.CategoryOfUnitsAttendance);
-        // console.log(Session.student[0]);
-
-        let sid = 0;
-
-        Session.forEach(function (item) {
-            console.log(item.student[sid]);
-            sid++;
-        });
-        // const Post = models.Session("Post", {
-        //     student: String
-
-        // });
-
-
-
-
-    });
-};
