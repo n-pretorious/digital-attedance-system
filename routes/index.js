@@ -148,7 +148,7 @@ router.post('/lecturer/reports', (req, res) => {
 
     models.Session.countDocuments(inputData, (err, results) => {
         console.log(err);
-        console.log('wertyjhgf');
+        // console.log('wertyjhgf');
 
         if (results > 0) {
             console.log(results);
