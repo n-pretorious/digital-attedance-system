@@ -1,0 +1,39 @@
+<html>
+
+<body>
+
+
+    <table class="table table-light" name="reportTable">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Admission number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" id="student">
+                    <%data.forEach(function(unit){ %>
+                <td>
+
+                    <%for (let i = 0; i < data.length; i++){ %>
+                    <% [i]%>
+                    <% } %></td>
+                <td><%=unit.student%></td>
+                <% })%>
+                </th>
+
+            </tr>
+            <!-- <tr> -->
+            <!-- <td>
+                            <% data.forEach(function(unit){ %>
+                                <%unit.student%></td> <%}) %> -->
+
+            <!-- <% data.forEach(function(unit){ %>
+                                <%=unit.student%></td><%}) %> -->
+            <!-- </tr> -->
+        </tbody>
+    </table>
+</body>
+
+</html>
