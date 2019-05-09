@@ -54,5 +54,16 @@
   </form>
 </div>
 
+<!-- <div class="form-group">
+        <!-- <select name="_id" class="form-control form-control-lg input-block" required></select> -->
+
+        <select class=" form-control form-control-lg input-block" id="CategoryOfUnitsAttendance"
+          name="CategoryOfUnitsAttendance" style="width:70% !important;" required>
+          <option selected disabled> -- SELECT --</option>
+          <% data.forEach(function(unit){ %>
+          <option value=<%= unit._id  %> <%= unit._id  %>> <%= unit.lecturer %> <%= unit.unit  %> </option>
+          <% }) %>
+        </select>
+      </div> -->
 
 <%include partials/footer %>
