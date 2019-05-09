@@ -105,6 +105,9 @@ exports.class_student_join = (req, res) => {
 
             } else {
                 console.log('outside radius');
+                // var popup = require('popups');
+
+                // popup.alert({ content: 'Failed to join class because you are outside the reach of your class' })
                 return res.status(500).json({
                     message: 'failed to join because you are outside the reach of your class'
                 })
@@ -113,10 +116,7 @@ exports.class_student_join = (req, res) => {
     }
 }
 
-//pushing data of students joining lecture
-// exports.post_student_joining_class =(req,res) =>{
-//     models.Session.find
-// }
+
 
 // lecturer to generate report
 exports.lecturer_print_report = (req, res) => {
@@ -129,12 +129,18 @@ exports.lecturer_print_report = (req, res) => {
         //  console.log(req.body.CategoryOfUnitsAttendance);
         // console.log(Session.student[0]);
 
-        let sid =0;      
-        
-          Session.forEach(function (item) {
+        let sid = 0;
+
+        Session.forEach(function (item) {
             console.log(item.student[sid]);
             sid++;
         });
+        // const Post = models.Session("Post", {
+        //     student: String
+
+        // });
+
+
 
 
     });
