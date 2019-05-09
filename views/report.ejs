@@ -7,25 +7,35 @@
 <div class="col-sm-9 col-xs-11" id="main">
   <a href="#" data-toggle="offcanvas"><i class="fa fa-navicon fa-lg"></i></a>
   <br>
-<div class="jumbotron jumbotron-fluid text-center"><h1>Generate Report</h1>
-  <div class="form-group">
-     <!-- <select name="_id" class="form-control form-control-lg input-block" required></select> -->
-   
-    <select class=" form-control form-control-lg input-block" id="CategoryOfUnitsAttendance" required>
-        <option selected disabled> -- SELECT --</option>
-        <% data.forEach(function(unit){ %>
-        <option value=<%= unit._id  %> <%= unit._id  %>> <%= unit.lecturer %> <%= unit.unit  %> </option>
-        <% }) %>
-      </select>
-      
-      <div class="m-5 pb-5">
-    <button class="btn btn-success btn-lg" type="button" onclick=""><i class="fa fa-eye"></i> View </button>
-    <button class="btn btn-success btn-lg" type="button"><i class="fa fa-print"></i> Print</button>
-  </div>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <h1>Generate Report</h1>
+    <form action="/lecturer/reports" method="POST">
+      <center>
+        <div class="form-group">
+          <!-- <select name="_id" class="form-control form-control-lg input-block" required></select> -->
+
+          <select class=" form-control form-control-lg input-block" id="CategoryOfUnitsAttendance" name="CategoryOfUnitsAttendance"
+            style="width:70% !important;" required>
+            <option selected disabled> -- SELECT --</option>
+            <% data.forEach(function(unit){ %>
+            <option value=<%= unit._id  %> <%= unit._id  %>> <%= unit.lecturer %> <%= unit.unit  %> </option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="date" class="form-control form-control-lg" style="width:70% !important;" name="CategoryOfLectureDates">
+        </div>
+
+        <div class="m-5 pb-5">
+          <button class="btn btn-success btn-lg" type="submit" ><i class="fa fa-eye"></i> View </button>
+          <button class="btn btn-success btn-lg" type="button"><i class="fa fa-print"></i> Print</button>
+        </div>
 
   </div>
-  </div>
- <!-- <div class="m-5 pb-5">
+  </center>
+  </form>
+</div>
+<!-- <div class="m-5 pb-5">
     <table class="table table-light">
       <thead class="thead-light">
         <tr>"CLASS NAME" BY "LECTURER NAME" ON "DATE" </tr>
@@ -38,9 +48,9 @@
 
       </thead>
       <tbody> -->
-        
-         
-        <!-- <tr>
+
+
+<!-- <tr>
           <th scope="row">1</th>
           <td>Mark</td>
           <td>Otto</td>
@@ -58,7 +68,7 @@
           <td>the Bird</td>
 
         </tr> -->
-      <!-- </tbody> -->
-    <!-- </table>
+<!-- </tbody> -->
+<!-- </table>
   </div> -->
 <%include partials/footer %>
