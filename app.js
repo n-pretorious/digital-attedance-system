@@ -1,7 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
+const express = require('express')
+const bodyParser = require('body-parser')
+const path = require('path')
 const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
 
 //connecting to database
 // NB: remember to pass it to nodemon.json
@@ -21,6 +22,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static(__dirname + '/public'));
+
+// Pass a secret to sign the secured http cookie
+app.use(cookieParser(process.env.JWT_KEY))
 
 app.use('/', routes)
 

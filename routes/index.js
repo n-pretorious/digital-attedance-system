@@ -7,10 +7,6 @@ const verifyToken = require('../middleware/auth');
 const ClassController = require('../controllers/class')
 const UserController = require('../controllers/user')
 
-
-
-
-
 // pages routes
 router.get('/signup', (req, res) => { res.render('signup', { title: 'Signup page' }) })
 router.get('/login', (req, res) => { res.render('login', { title: 'Login page' }) })
