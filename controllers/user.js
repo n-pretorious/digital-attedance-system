@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { validationResult } = require('express-validator/check')
 
+
 exports.user_signup = (req, res) => {
     // models.Users.findOne({email : req.body.email}, (err, data) => {
     //      if (data.length > 1) {
@@ -41,7 +42,12 @@ exports.user_signup = (req, res) => {
     }        
 }
 
+
 exports.user_login = (req, res, next) => {  
+
+
+
+
     let user = {
         email : req.body.email,
         password : req.body.password
@@ -51,12 +57,7 @@ exports.user_login = (req, res, next) => {
     models.Users.findOne({email : user.email}, function (err, data) {
         if(err){
             console.log(err)
-        }     
-        console.log(data)
-        console.log(user.password)
-        
-        console.log(data.password)
-        
+        }             
 
         bcrypt.compare(user.password, data.password, (err, result) => {
             if (err) {
@@ -64,28 +65,42 @@ exports.user_login = (req, res, next) => {
                     message : 'Auth failed'
                 })
             }
-        console.log(result)
+        // console.log(result)
 
-            if (result) {                
-                const token = jwt.sign(
-                    {
-                        email: data.email,
-                        user_id : data._id
-                    }, 
-                    process.env.JWT_KEY,
-                    {
-                        expiresIn : "2h"
-                    }
+        const payload = {
+            email: data.email,
+            user_id : data._id
+        }
 
-                )
+            if (result) {        
+                const token = jwt.sign(payload, process.env.JWT_KEY, { 
+                    expiresIn : "2h"
+                }, (err, token) => {
+                    if (err) return res.status(500).json(err)
+            
+                    // Send the Set-Cookie header with the jwt to the client
+                    res.cookie('jwt', token, {
+                        maxAge: 7200,
+                        httpOnly: true,
+                        // sameSite: true,
+                        // signed: true,
+                        // secure: true
+                    });
+            
+                    // Response json with the jwt
+                    return res.json({
+                        jwt: token
+                    })
+                })
+
                 return res.status(200).json({
                     message: "Auth successful",
                     token: token
-                  });
+                  })
                 // if (data.role === "lecturer") {
-                //     return res.redirect(200,'/lecturer')
+                //     return res.redirect('/lecturer')
                 // } else if (data.role === "student") {
-                //     return res.redirect(200, '/student')
+                //     return res.redirect('/student')
                 // } else {
                 //     return res.status(401).json({
                 //         message: 'Unauthorized'

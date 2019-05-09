@@ -7,17 +7,13 @@ const verifyToken = require('../middleware/auth');
 const ClassController = require('../controllers/class')
 const UserController = require('../controllers/user')
 
-
-
-
-
 // pages routes
 router.get('/signup', (req,res) => {res.render('signup',{title: 'Signup page'})})
 router.get('/login', (req,res) => {res.render('login', {title: 'Login page'})})
 
 // lecturers routes
-router.get('/lecturer',  (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
-router.get('/lecturer/add-new-unit',  (req,res) => {res.render('registerUnits', {title: 'Add New unit'})})
+router.get('/lecturer', (req,res) => {res.render('lecturerHome', {title: 'Welcome Lecturer'})})
+router.get('/lecturer/add-new-unit', (req,res) => {res.render('registerUnits', {title: 'Add New unit'})})
 router.get('/lecturer/startClass', (req,res) => {
     models.Units.find({}, function (err, data) {
         res.render('startClass', {
@@ -35,7 +31,7 @@ router.get('/lecturer/endClass', (req,res) => {
         console.log(data)
     })
 })
-router.get('/lecturer/reports',  (req,res) => {
+router.get('/lecturer/reports', (req,res) => {
     models.Session.find({}, function (err, data) {
         res.render('report', {
             title: 'Lectures report',
@@ -47,7 +43,7 @@ router.get('/lecturer/reports',  (req,res) => {
 // students routes
 
 
-router.get('/student',  (req,res) => {res.render('studentHome', {title: 'Welcome Student'})})
+router.get('/student', (req,res) => {res.render('studentHome', {title: 'Welcome Student'})})
 router.get('/student/class', (req,res) => {
     models.Session.find({}, function (err, data) {
         res.render('studentClass', {
