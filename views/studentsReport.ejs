@@ -1,7 +1,40 @@
 <html>
+<head>
+    <title></title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+</head>
 <body>
+    <div style="align-content:center;"><center>University of Eldoret,<br>
 
+            Address: P. O. Box 1125-30100 Eldoret, Kenya.<br>
+           
+            Phone:<br>
+           +254(0) 788 232 004,<br>
+           +254(0) 740 354 966,<br>
+           +254(0) 788 232 004,<br>
+           +254(0) 774 249 552 (Academic)<br>
+           
+            Email: info@uoeld.ac.ke </style>
+        </center>
+        </div>
+<br><br>
 
     <table class="table table-light" name="reportTable">
         <thead class="thead-light">
@@ -11,27 +44,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row" id="student">
+            
+                <th scope="row" rowspan="1" id="student">
                     <%data.forEach(function(unit){ %>
+                 <tr>
                 <td>
 
                     <%for (let i = 0; i < data.length; i++){ %>
                     <% [i]%>
-                    <% } %></td>
+                    <% } %></td>    
                 <td><%=unit.student%></td>
                 <% })%>
+                        </tr>
                 </th>
-
-            </tr>
-            <!-- <tr> -->
-            <!-- <td>
-                            <% data.forEach(function(unit){ %>
-                                <%unit.student%></td> <%}) %> -->
-
-            <!-- <% data.forEach(function(unit){ %>
-                                <%=unit.student%></td><%}) %> -->
-            <!-- </tr> -->
         </tbody>
     </table>
 </body>
