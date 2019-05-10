@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const { validationResult } = require('express-validator/check')
 
+
 exports.user_signup = (req, res) => {
     // models.Users.findOne({email : req.body.email}, (err, data) => {
     //      if (data.length > 1) {
@@ -41,7 +42,12 @@ exports.user_signup = (req, res) => {
     }        
 }
 
+
 exports.user_login = (req, res, next) => {  
+
+
+
+
     let user = {
         email : req.body.email,
         password : req.body.password
@@ -51,12 +57,7 @@ exports.user_login = (req, res, next) => {
     models.Users.findOne({email : user.email}, function (err, data) {
         if(err){
             console.log(err)
-        }     
-        console.log(data)
-        console.log(user.password)
-        
-        console.log(data.password)
-        
+        }             
 
         bcrypt.compare(user.password, data.password, (err, result) => {
             if (err) {
