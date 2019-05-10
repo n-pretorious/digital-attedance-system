@@ -78,19 +78,19 @@ exports.user_login = (req, res, next) => {
                     }
 
                 )
-                return res.status(200).json({
-                    message: "Auth successful",
-                    token: token
-                  });
-                // if (data.role === "lecturer") {
-                //     return res.redirect(200,'/lecturer')
-                // } else if (data.role === "student") {
-                //     return res.redirect(200, '/student')
-                // } else {
-                //     return res.status(401).json({
-                //         message: 'Unauthorized'
-                //     })
-                // }
+                // return res.status(200).json({
+                //     message: "Auth successful",
+                //     token: token
+                //   });
+                if (data.role === "lecturer") {
+                    return res.redirect(200,'/lecturer')
+                } else if (data.role === "student") {
+                    return res.redirect(200, '/student')
+                } else {
+                    return res.status(401).json({
+                        message: 'Unauthorized'
+                    })
+                }
             }
 
             // if password is inccorect          
