@@ -1,64 +1,141 @@
 <html>
+
 <head>
-    <title></title>
+
+    <link rel="stylesheet" href="/stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+        div.reportTable {
+            padding-left: 300px;
+            padding-right: 400px;
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+        }
+
+        table {
+            text-align: center;
+            border: 1px solid;
+            border-color: #28a745;
+        }
+
+        th {
+            background-color: #032f62;
+        }
+
+        div.heading1 {
+            padding-top: 30px;
+            color: #28a745;
+        }
+    </style>
+    <title> Attendance Report</title>
+    <!-- <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #032f62;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>  -->
 
 </head>
+
 <body>
-    <div style="align-content:center;"><center>University of Eldoret,<br>
+    <div class="col-sm- col-xs-10" style="padding-top:80px;">
+        <div style="align-content:center; color:#28a745">
+            <center>
+                <h5>University of Eldoret<br>
+                    Address: P. O. Box 1125-30100 Eldoret, Kenya.<br>
+                    Phone:<br>
+                    +254(0) 788 232 004,<br>
+                    +254(0) 740 354 966,<br>
+                    +254(0) 788 232 004,<br>
+                    +254(0) 774 249 552 (Academic)<br>
 
-            Address: P. O. Box 1125-30100 Eldoret, Kenya.<br>
-           
-            Phone:<br>
-           +254(0) 788 232 004,<br>
-           +254(0) 740 354 966,<br>
-           +254(0) 788 232 004,<br>
-           +254(0) 774 249 552 (Academic)<br>
-           
-            Email: info@uoeld.ac.ke </style>
-        </center>
+                    Email:<a href="https://www.uoeld.ac.ke/"> info@uoeld.ac.ke</a> </style>
+                </h5>
+            </center>
         </div>
-<br><br>
 
-    <table class="table table-light" name="reportTable">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Admission number</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-                <th scope="row" rowspan="1" id="student">
-                    <%data.forEach(function(unit){ %>
-                 <tr>
-                <td>
+        <div class="heading1">
+            <center>
+                <h1>Attendance Report</h1>
 
-                    <%for (let i = 0; i < data.length; i++){ %>
-                    <% [i]%>
-                    <% } %></td>    
-                <td><%=unit.student%></td>
+
+            </center>
+
+        </div>
+        <br><br>
+        <div class="reportTable">
+
+            <!-- <table class="table table-hover table-light" name="reportTable">
+                <thead class="th">
+                    <tr>
+                        <th scope="col" style="color:white">#</th>
+                        <th scope="col" style="color:white">Admission number</th>
+                    </tr>
+                </thead>
+
+                <%for(var i = 0; i < data.length; i++) {%>
+                <tbody>
+
+                    <tr>
+                        <%for(var value in data.student) {%>
+                        <td>
+                            <%=data.student[i][value]%>
+                            <%=i++%>
+                        </td>
+                        <%} %>
+                    </tr>
+                   
+                         </tbody>
+                          <%}%>
+                        </table> -->
+            <table class="table table-hover table-light" name="reportTable">
+                <thead class="th">
+                    <tr>
+                        <th scope="col" style="color:white">#</th>
+                        <th scope="col" style="color:white">Admission number</th>
+                    </tr>
+                </thead>
+                <%
+                    var m =0;
+                    data.forEach(function(unit){ %>
+                <tbody>
+                    <% for(i=0; i< data.length; i++) { 
+                        m++;
+                        %>
+                    <tr>
+
+                        <% for(var value in data[i].student){%>
+                    <tr>
+                        <td>
+                            <%=m++%>
+                        </td>
+                        <td>
+
+                            <%= data[i].student[i] %>
+                        </td>
+
+                    </tr>
+                    <%}%>
+                    </tr>
+                    <% } %>
+                </tbody>
                 <% })%>
-                        </tr>
-                </th>
-        </tbody>
-    </table>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
