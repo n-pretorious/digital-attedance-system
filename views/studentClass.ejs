@@ -28,11 +28,10 @@
                             console.log(ClassEndTime)
                             %>
                         <% if (ClassEndTime===0) { %>
-                        <option value=<%= unit._id  %>> <%= unit.unit %> </option>
+                        <option value= <%= unit._id  %>> <%= unit.unit %> </option>
                         <% }else{%>
                         <option disabled>No Active Classes</option>
-                        <%}
-                         %>
+                        <%}%>
                         <% })}else{ %>
                         <option disabled>There are no Lectures</option>
                         <%}
