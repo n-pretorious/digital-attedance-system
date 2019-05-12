@@ -16,14 +16,26 @@
 
                     <select name="_id" class="form-control form-control-lg input-block" required>
 
-                        <% if(data.length>0) { %>
-                            <option selected disabled>Select unit to proceed</option>
-                            <% data.forEach(function(unit){ %>
-                                <% if (unit.endTime === "") { %>
-                                    <option value=<%= unit._id  %>> <%= unit.unit %> </option>
-                                <% }  %>
-                            <% }) %>
-                        <% } %>
+                        <% if(data.length>0){%>
+                        <option selected disabled>Select unit to proceed</option>
+                        <% data.forEach(function(unit){ 
+                            <!-- Set Class End time as a variable -->
+                            var ClassEndTime = unit.endTime;
+                            <!-- If end time comes as an empty string, set it to zero 0 -->
+                            if(ClassEndTime.length < 1 ){
+                                ClassEndTime = 0; 
+                            }
+                            console.log(ClassEndTime)
+                            %>
+                        <% if (ClassEndTime===0) { %>
+                        <option value= <%= unit._id  %>> <%= unit.unit %> </option>
+                        <% }else{%>
+                        <option disabled>No Active Classes</option>
+                        <%}%>
+                        <% })}else{ %>
+                        <option disabled>There are no Lectures</option>
+                        <%}
+                         %>
                     </select>
 
                 </div>

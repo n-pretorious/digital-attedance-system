@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator/check');
 const models = require('../db/mongo');
 const geolocationUtils = require('geolocation-utils')
+const alert = require('alert-node')
 
 // function for a lecturer to start a class
 exports.class_lecture_start = (req, res) => {
@@ -8,8 +9,9 @@ exports.class_lecture_start = (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(422).json({
             errors: errors.array()
-        });
-    } else {
+        })
+    }
+    else {
         //set todays date
 
         var d = new Date(),
@@ -41,10 +43,12 @@ exports.class_lecture_start = (req, res) => {
             }
 
             lecture.save((err) => {
+                alert("The class has been added succesfully");
                 return res.redirect('/lecturer/endClass');
             });
         })
         console.log(newClass)
+
     }
 }
 // function to delete unit
@@ -70,7 +74,7 @@ exports.lecturer_ends_class = (req, res) => {
             if (err) {
                 console.log(err)
             } else {
-                console.log("Lecture has been ended successfully")
+                alert("Lecture has been ended successfully")
             }
 
             console.log(Session)
