@@ -6,6 +6,7 @@ const sanitize = require('../middleware/sanitize')
 const verifyToken = require('../middleware/auth');
 const ClassController = require('../controllers/class')
 const UserController = require('../controllers/user')
+const alert = require('alert-node')
 
 // pages routes
 router.get('/', (req, res) => { res.render('signup', { title: 'Signup page' }) })
@@ -61,7 +62,7 @@ router.post('/login', sanitize, UserController.user_login)
 
 
 
-// post new unit
+// post  add new unit
 router.post('/lecturer/add-new-unit', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -79,7 +80,8 @@ router.post('/lecturer/add-new-unit', (req, res) => {
                 console.log(err);
             }
             unit.save((err) => {
-                return res.redirect('/lecturer/startClass');
+                alert("Unit has been added Succesfully")
+                 res.redirect('/lecturer/add-new-unit');
             });
         })
         console.log(newUnit);
@@ -103,8 +105,8 @@ router.post('/lecturer/delete-unit', (req, res) => {
                     }
                     else {
                         console.log(result)
-                        console.log("Unit has been deleted successfully");
-                        res.redirect('/lecturer/add-new-unit');
+                        alert("Unit has been deleted successfully");
+                        res.redirect('/lecturer/delete-unit');
                     }
 
 
@@ -112,7 +114,8 @@ router.post('/lecturer/delete-unit', (req, res) => {
                 )
 
             } else {
-                console.log('Sorry, No Lectures available')
+                alert('Sorry, No Lectures available');
+                res.redirect('/lecturer/delete-unit')
             }
         }
 
@@ -162,7 +165,8 @@ router.post('/lecturer/reports', (req, res) => {
                 })
         } else {
             console.log('No Records found');
-            res.redirect('/lecturer/reports/single'
+            alert("No records found");
+            res.redirect('/lecturer/reports'
                 )
         }
     }
