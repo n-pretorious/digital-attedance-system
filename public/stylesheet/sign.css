@@ -3,10 +3,13 @@
 /* div.logo{
     background: #032f62;
 } */
+body{
+    background-image: url('/images/lectureHall.jpg')
+}
 
  div.main{
     width: 500px;
-    height:590px; 
+    height:570px; 
     background:#032f62;
 	top: 60%;
 	left: 50%;
