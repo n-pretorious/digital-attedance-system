@@ -14,9 +14,9 @@ router.get('/signup', (req, res) => { res.render('signup', { title: 'Signup page
 router.get('/login', (req, res) => { res.render('login', { title: 'Login page' }) })
 
 // lecturers routes
-router.get('/lecturer', verifyToken, (req, res) => { res.render('lecturerHome', { title: 'Welcome Lecturer' }) })
-router.get('/lecturer/add-new-unit', verifyToken, (req, res) => { res.render('registerUnits', { title: 'Add New unit' }) })
-router.get('/lecturer/startClass', verifyToken, (req, res) => {
+router.get('/lecturer', (req, res) => { res.render('lecturerHome', { title: 'Welcome Lecturer' }) })
+router.get('/lecturer/add-new-unit', (req, res) => { res.render('registerUnits', { title: 'Add New unit' }) })
+router.get('/lecturer/startClass', (req, res) => {
     models.Units.find({}, function (err, data) {
         res.render('startClass', {
             title: 'Set up a class',
@@ -27,7 +27,7 @@ router.get('/lecturer/startClass', verifyToken, (req, res) => {
 
 
 //  get request to end a class
-router.get('/lecturer/endClass', verifyToken, (req, res) => {
+router.get('/lecturer/endClass', (req, res) => {
     models.Session.find({}, function (err, data) {
         res.render('endClass', {
             title: 'End a class',
@@ -39,8 +39,8 @@ router.get('/lecturer/endClass', verifyToken, (req, res) => {
 
 
 
-router.get('/student', verifyToken, (req, res) => { res.render('studentHome', { title: 'Welcome Student' }) })
-router.get('/student/class', verifyToken, (req, res) => {
+router.get('/student', (req, res) => { res.render('studentHome', { title: 'Welcome Student' }) })
+router.get('/student/class', (req, res) => {
     models.Session.find({}, function (err, data) {
         res.render('studentClass', {
             title: 'Welcome To a Class',
@@ -50,10 +50,10 @@ router.get('/student/class', verifyToken, (req, res) => {
     })
 })
 
-router.get('/session', verifyToken, (req, res) => { res.render('session', { title: 'Class' }) })
+router.get('/session', (req, res) => { res.render('session', { title: 'Class' }) })
 
 // student's route
-router.get('/student', verifyToken, (req, res) => { res.render('index', { title: 'Welcome student' }) })
+router.get('/student', (req, res) => { res.render('index', { title: 'Welcome student' }) })
 
 router.post('/signup', sanitize, UserController.user_signup)
 
@@ -63,7 +63,7 @@ router.post('/login', sanitize, UserController.user_login)
 
 
 // post  add new unit
-router.post('/lecturer/add-new-unit', verifyToken, (req, res) => {
+router.post('/lecturer/add-new-unit', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
@@ -89,7 +89,7 @@ router.post('/lecturer/add-new-unit', verifyToken, (req, res) => {
 })
 
 // lecturer to delete unit
-router.post('/lecturer/delete-unit', verifyToken, (req, res) => {
+router.post('/lecturer/delete-unit', (req, res) => {
     models.Units.countDocuments({ code: req.body.code }, (err, result) => {
         if (err) {
             console.log(err)
@@ -124,7 +124,7 @@ router.post('/lecturer/delete-unit', verifyToken, (req, res) => {
 
 
 //  get request to delete a unit
-router.get('/lecturer/delete-unit', verifyToken, (req, res) => {
+router.get('/lecturer/delete-unit', (req, res) => {
     models.Units.find({}, function (err, data) {
         res.render('deleteUnit', {
             title: 'Delete Unit',
@@ -138,7 +138,7 @@ router.get('/lecturer/delete-unit', verifyToken, (req, res) => {
 
 
 // lecturer to view report
-router.post('/lecturer/reports', verifyToken, (req, res) => {
+router.post('/lecturer/reports', (req, res) => {
 
     // models.Session.find({ _id: req.body.CategoryOfUnitsAttendance, lectureDate: req.body.CategoryOfLectureDates }, function (err, Session) {
 
@@ -179,7 +179,7 @@ router.post('/lecturer/reports', verifyToken, (req, res) => {
 // router.get('/lecturer/reports/single', (req, res) => { res.render('index', ) })
 //lecturer generating reports
 
-router.get('/lecturer/reports', verifyToken, (req, res) => {
+router.get('/lecturer/reports', (req, res) => {
     models.Session.find({}, function (err, data) {
         res.render('report', {
             title: 'Lectures report',

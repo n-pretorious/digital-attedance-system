@@ -5,41 +5,41 @@ const { validationResult } = require('express-validator/check')
 
 
 exports.user_signup = (req, res) => {
-    models.Users.findOne({email : req.body.email}, (err, data) => {
-         if (data.length > 1) {
-            return res.status(409).json({
-                message: "Email exists"
-              });
-         } else {
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(422).json({
-                    errors: errors.array()
-                });
-            } else {
-                let newUser = {
-                    user_id: req.body.user_id,
-                    email: req.body.email,
-                    password: req.body.password,
-                    confirm_password: req.body.confirm_password,
-                    role: req.body.role
-                };
-                models.Users.create(newUser, function (err, user) {
-                    if (err) {
-                        console.log(err);                
-                    }
-                    try {
-                        user.save(() => {
-                            return res.redirect('/signup');
-                            });
-                    } catch (error) {
-                        console.log(error)
-                    }
-        
-                })
-            } 
-         }
-    })       
+    // models.Users.findOne({email : req.body.email}, (err, data) => {
+    //      if (data.length > 1) {
+    //         return res.status(409).json({
+    //             message: "Email exists"
+    //           });
+    //      } else {
+    //      }
+    // }) 
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array()
+        });
+    } else {
+        let newUser = {
+            user_id: req.body.user_id,
+            email: req.body.email,
+            password: req.body.password,
+            confirm_password: req.body.confirm_password,
+            role: req.body.role
+        };
+        models.Users.create(newUser, function (err, user) {
+            if (err) {
+                console.log(err);                
+            }
+            try {
+                user.save(() => {
+                    return res.redirect('/signup');
+                    });
+            } catch (error) {
+                console.log(error)
+            }
+
+        })
+    }       
 }
 
 
