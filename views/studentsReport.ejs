@@ -74,34 +74,10 @@
         </div>
         <%})%>
         <div class="reportTable">
-            <table class="table table-hover table-light" name="reportTable">
-                <thead class="th">
-                    <tr>
-                        <th scope="col" style="color:white">#</th>
-                        <th scope="col" style="color:white">Admission number</th>
-                    </tr>
-                </thead>
 
-                <tbody>
 
-                    <tr>
-                        <% data.forEach(function(unit) {%>
-                            <%console.log(unit.student.length)%>
-                        <!-- <tr> -->
-                            <%let stu = unit.student %>
-                            <%stu.forEach(function(unit){%>
-                                <td>
-                                <%=unit%>
-                                </td>
-                            <%})%>
-                            <!-- <%=unit.student.length%> -->
-                        <!-- </tr> -->
-                        <%}) %>
-                    </tr>
-                   
-                         </tbody>
-                        </table>
-            <!-- <table class="table table-hover table-light" name="reportTable">
+
+             <table class="table table-hover table-light" name="reportTable">
                 <thead class="th">
                     <tr>
                         <th scope="col" style="color:white">#</th>
@@ -109,33 +85,26 @@
                     </tr>
                 </thead>
                 
-                   <% var m =0;%>
+                   <% var m =1;%>
                    <% data.forEach(function(unit){ %>
                 <tbody>
-                    <% for(i=0; i< data.length; i++) { 
-                        m++;
-                        %>
-                    <tr>
-                        <% for(var value in data[i].student){%>
-                    <tr>
-                        <td>
-                            <%=m++%>
-                        </td>
-                        <td>
-                            <% console.log(data[i].student);%> 
 
-                            <% for(let stu = 0; stu <= data[i].student; stu++) { %>
-                              <td><%=stu%></td>   
-                                <%}%>
-                            
-                        </td>
+                    <tr>
+                        <%let stu = unit.student %>
+                        <%stu.forEach(function(studentCode){%>
+                        <tr>
+                            <td>
+                                <%=m++%>
+                            </td>
+                            <td>
+                                <%=studentCode%>
+                            </td>
+                        </tr>
+                        <%})%>
                     </tr>
-                    <%}%>
-                    </tr>
-                    <% } %>
                 </tbody>
                 <% })%>
-            </table> -->
+            </table>
         </div>
     </div>
 </body>
