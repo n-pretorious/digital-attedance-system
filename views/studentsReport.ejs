@@ -8,7 +8,7 @@
     <style>
         div.reportTable {
             padding-left: 300px;
-            padding-right: 400px;
+            padding-right: 300px;
 
 
         }
@@ -27,26 +27,13 @@
             padding-top: 30px;
             color: #28a745;
         }
+
+        div.classDetails {
+            /* padding-left: 30px; */
+            padding: 10px;
+        }
     </style>
     <title> Attendance Report</title>
-    <!-- <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td,
-        th {
-            border: 1px solid #032f62;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>  -->
 
 </head>
 
@@ -70,14 +57,23 @@
         <div class="heading1">
             <center>
                 <h1>Attendance Report</h1>
-
-
             </center>
-
         </div>
-        <br><br>
-        <div class="reportTable">
+        <%data.forEach(function(unit){%>
+        <div class="classDetails">
 
+            <tr>
+                <center>Lecturer Name: <%= unit.lecturer %></center>
+            </tr>
+            <tr>
+                <center>Unit Code: <%= unit.unit  %></center>
+            </tr>
+            <tr>
+                <center> Lecture Date: <%=unit.lectureDate%></center>
+            </tr>
+        </div>
+        <%})%>
+        <div class="reportTable">
             <!-- <table class="table table-hover table-light" name="reportTable">
                 <thead class="th">
                     <tr>
@@ -116,7 +112,6 @@
                         m++;
                         %>
                     <tr>
-
                         <% for(var value in data[i].student){%>
                     <tr>
                         <td>
