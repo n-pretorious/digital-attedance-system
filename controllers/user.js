@@ -5,48 +5,45 @@ const { validationResult } = require('express-validator/check')
 
 
 exports.user_signup = (req, res) => {
-    // models.Users.findOne({email : req.body.email}, (err, data) => {
-    //      if (data.length > 1) {
-    //         return res.status(409).json({
-    //             message: "Email exists"
-    //           });
-    //      } else {}
-    // })
-
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).json({
-            errors: errors.array()
-        });
-    } else {
-        let newUser = {
-            user_id: req.body.user_id,
-            email: req.body.email,
-            password: req.body.password,
-            confirm_password: req.body.confirm_password,
-            role: req.body.role
-        };
-        models.Users.create(newUser, function (err, user) {
-            if (err) {
-                console.log(err);                
-            }
-            try {
-                user.save(() => {
-                    return res.redirect('/signup');
-                    });
-            } catch (error) {
-                console.log(error)
-            }
-
-        })
-    }        
+    models.Users.findOne({email : req.body.email}, (err, data) => {
+         if (data.length > 1) {
+            return res.status(409).json({
+                message: "Email exists"
+              });
+         } else {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(422).json({
+                    errors: errors.array()
+                });
+            } else {
+                let newUser = {
+                    user_id: req.body.user_id,
+                    email: req.body.email,
+                    password: req.body.password,
+                    confirm_password: req.body.confirm_password,
+                    role: req.body.role
+                };
+                models.Users.create(newUser, function (err, user) {
+                    if (err) {
+                        console.log(err);                
+                    }
+                    try {
+                        user.save(() => {
+                            return res.redirect('/signup');
+                            });
+                    } catch (error) {
+                        console.log(error)
+                    }
+        
+                })
+            } 
+         }
+    })       
 }
 
 
 exports.user_login = (req, res, next) => {  
-
-
-
 
     let user = {
         email : req.body.email,
@@ -65,7 +62,7 @@ exports.user_login = (req, res, next) => {
                     message : 'Auth failed'
                 })
             }
-        console.log(result)
+        // console.log(result)
 
             if (result) {                
                 const token = jwt.sign(
@@ -79,14 +76,21 @@ exports.user_login = (req, res, next) => {
                     }
 
                 )
-                // return res.status(200).json({
-                //     message: "Auth successful",
-                //     token: token
-                //   });
+
+                // Send the Set-Cookie header with the jwt to the client
+                res.cookie('jwt', token, {
+                    maxAge: 7200,
+                    httpOnly: true,
+                    // sameSite: true,
+                    // signed: true,
+                    // secure: true
+                })
+                // console.log(token)
+
                 if (data.role === "lecturer") {
-                    return res.redirect(200,'/lecturer')
+                    return res.redirect('/lecturer')
                 } else if (data.role === "student") {
-                    return res.redirect(200, '/student')
+                    return res.redirect('/student')
                 } else {
                     return res.status(401).json({
                         message: 'Unauthorized'

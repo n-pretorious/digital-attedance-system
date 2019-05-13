@@ -14,6 +14,9 @@ const routes = require('./routes')
 const app = express();
 let PORT = 5000;
 
+// Pass a secret to sign the secured http cookie
+app.use(cookieParser(process.env.JWT_KEY))
+
 //view engine
 app.set('view engine','ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -23,8 +26,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 // app.use(express.static(__dirname + '/public'));
 
-// Pass a secret to sign the secured http cookie
-app.use(cookieParser(process.env.JWT_KEY))
 
 app.use('/', routes)
 
