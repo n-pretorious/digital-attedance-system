@@ -19,7 +19,7 @@
   "dependencies": {
     "@ttskch/select2-bootstrap4-theme": "^1.2.2",
     "alert-node": "^1.2.4",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.1",
